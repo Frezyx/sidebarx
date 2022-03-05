@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 
-class SidebarX extends StatelessWidget {
+class SidebarX extends StatefulWidget {
   const SidebarX({
     Key? key,
     required this.controller,
@@ -10,6 +10,7 @@ class SidebarX extends StatelessWidget {
     this.extendedTheme,
     this.headerBuilder,
     this.footerBuilder,
+    this.separatorBuilder,
   }) : super(key: key);
 
   final SidebarXTheme theme;
@@ -20,16 +21,48 @@ class SidebarX extends StatelessWidget {
   final List<SidebarXItem> items;
   final SidebarXController controller;
 
+  final IndexedWidgetBuilder? separatorBuilder;
+
   final Widget Function(BuildContext context, bool extended)? headerBuilder;
   final Widget Function(BuildContext context, bool extended)? footerBuilder;
 
   @override
+  State<SidebarX> createState() => _SidebarXState();
+}
+
+class _SidebarXState extends State<SidebarX>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+
+  @override
+  void initState() {
+    widget.controller.addListener(
+      () {
+        if (_animationController.isCompleted) {
+          _animationController.reverse();
+        } else {
+          _animationController.forward();
+        }
+      },
+    );
+
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+    );
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: controller,
+      animation: widget.controller,
       builder: (context, child) {
-        final selectedTheme =
-            controller.extended ? extendedTheme ?? theme : theme;
+        final extendedT = widget.extendedTheme?.mergeWith(widget.theme);
+        final selectedTheme = widget.controller.extended
+            ? extendedT ?? widget.theme
+            : widget.theme;
+
         final t = selectedTheme.mergeFlutterTheme(context);
 
         return AnimatedContainer(
@@ -41,23 +74,30 @@ class SidebarX extends StatelessWidget {
           decoration: t.decoration,
           child: Column(
             children: [
-              headerBuilder?.call(context, controller.extended) ??
+              widget.headerBuilder?.call(context, widget.controller.extended) ??
                   const SizedBox(),
               Expanded(
-                child: ListView.builder(
-                  itemCount: items.length,
+                child: ListView.separated(
+                  itemCount: widget.items.length,
+                  separatorBuilder: widget.separatorBuilder ??
+                      (_, __) => const SizedBox(height: 8),
                   itemBuilder: (context, index) {
-                    final item = items[index];
+                    final item = widget.items[index];
                     return SidebarXCell(
                       item: item,
                       theme: t,
-                      extended: controller.extended,
-                      selected: controller.selectedIndex == index,
+                      animationController: _animationController,
+                      extended: widget.controller.extended,
+                      selected: widget.controller.selectedIndex == index,
+                      onTap: () {
+                        item.onTap?.call();
+                        widget.controller.selectIndex(index);
+                      },
                     );
                   },
                 ),
               ),
-              footerBuilder?.call(context, controller.extended) ??
+              widget.footerBuilder?.call(context, widget.controller.extended) ??
                   const SizedBox()
             ],
           ),

@@ -31,6 +31,16 @@ class MyApp extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     margin: const EdgeInsets.all(10),
+                    selectedItemDecoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.3),
+                          blurRadius: 10,
+                        )
+                      ],
+                    ),
                   ),
                   headerBuilder: (context, extended) {
                     return Container(
@@ -38,7 +48,7 @@ class MyApp extends StatelessWidget {
                     );
                   },
                   extendedTheme: const SidebarXTheme(
-                    width: 240,
+                    width: 200,
                     decoration: BoxDecoration(color: Colors.white),
                   ),
                   items: [

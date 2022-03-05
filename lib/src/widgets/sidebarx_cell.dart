@@ -1,35 +1,86 @@
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 
-class SidebarXCell extends StatelessWidget {
+class SidebarXCell extends StatefulWidget {
   const SidebarXCell({
     Key? key,
     required this.item,
     required this.extended,
     required this.selected,
     required this.theme,
+    required this.onTap,
+    required this.animationController,
   }) : super(key: key);
 
   final bool extended;
   final bool selected;
   final SidebarXItem item;
   final SidebarXTheme theme;
+  final VoidCallback onTap;
+  final AnimationController animationController;
+
+  @override
+  State<SidebarXCell> createState() => _SidebarXCellState();
+}
+
+class _SidebarXCellState extends State<SidebarXCell> {
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animation = CurvedAnimation(
+      parent: widget.animationController,
+      curve: Curves.easeIn,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    final iconTheme = selected ? theme.selectedIconTheme : theme.iconTheme;
-    final textStyle = selected ? theme.selectedTextStyle : theme.textStyle;
+    final theme = widget.theme;
+    final iconTheme =
+        widget.selected ? theme.selectedIconTheme : theme.iconTheme;
+    final textStyle =
+        widget.selected ? theme.selectedTextStyle : theme.textStyle;
     final decoration =
-        selected ? theme.selectedItemDecoration : theme.decoration;
-    return Container(
-      decoration: decoration,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Flexible(flex: 4, child: _Icon(item: item, iconTheme: iconTheme)),
-          if (extended)
-            Flexible(flex: 6, child: Text(item.label ?? '', style: textStyle)),
-        ],
+        widget.selected ? theme.selectedItemDecoration : theme.decoration;
+
+    return GestureDetector(
+      onTap: widget.onTap,
+      child: Container(
+        decoration: decoration,
+        padding: const EdgeInsets.all(8),
+        margin: const EdgeInsets.all(4),
+        child: Row(
+          mainAxisAlignment: widget.extended
+              ? MainAxisAlignment.start
+              : MainAxisAlignment.center,
+          children: [
+            AnimatedBuilder(
+              animation: _animation,
+              builder: (context, _) {
+                final value = ((1 - _animation.value) * 6).toInt();
+                if (value <= 0) {
+                  return const SizedBox();
+                }
+                return Spacer(flex: value);
+              },
+            ),
+            _Icon(item: widget.item, iconTheme: iconTheme),
+            Flexible(
+              flex: 6,
+              child: FadeTransition(
+                opacity: _animation,
+                child: Text(
+                  widget.item.label ?? '',
+                  style: textStyle,
+                  overflow: TextOverflow.fade,
+                  maxLines: 1,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -47,15 +98,10 @@ class _Icon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      icon: Icon(
-        item.icon,
-        color: iconTheme?.color,
-        size: iconTheme?.size,
-      ),
-      onPressed: () {
-        item.onTap?.call();
-      },
+    return Icon(
+      item.icon,
+      color: iconTheme?.color,
+      size: iconTheme?.size,
     );
   }
 }
