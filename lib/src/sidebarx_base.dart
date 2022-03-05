@@ -7,51 +7,58 @@ class SidebarX extends StatelessWidget {
     required this.controller,
     this.items = const [],
     this.theme = const SidebarXTheme(),
-    this.extendedTheme = const SidebarXTheme(),
+    this.extendedTheme,
+    this.headerBuilder,
+    this.footerBuilder,
   }) : super(key: key);
 
   final SidebarXTheme theme;
-  final SidebarXTheme extendedTheme;
+
+  /// Theme of extended sidebar
+  /// Using [theme] if [extendedTheme] is null
+  final SidebarXTheme? extendedTheme;
   final List<SidebarXItem> items;
   final SidebarXController controller;
+
+  final Widget Function(BuildContext context, bool extended)? headerBuilder;
+  final Widget Function(BuildContext context, bool extended)? footerBuilder;
 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: controller,
       builder: (context, child) {
+        final selectedTheme =
+            controller.extended ? extendedTheme ?? theme : theme;
+        final t = selectedTheme.mergeFlutterTheme(context);
+
         return AnimatedContainer(
           duration: const Duration(milliseconds: 300),
-          width: controller.extended ? extendedTheme.width : theme.width,
-          height: double.infinity,
-          padding: controller.extended ? extendedTheme.padding : theme.padding,
-          margin: controller.extended ? extendedTheme.margin : theme.margin,
-          decoration:
-              controller.extended ? extendedTheme.decoration : theme.decoration,
+          width: t.width,
+          height: t.height,
+          padding: t.padding,
+          margin: t.margin,
+          decoration: t.decoration,
           child: Column(
             children: [
-              // Container(
-              //   height: 200,
-              //   color: Colors.red,
-              // ),
+              headerBuilder?.call(context, controller.extended) ??
+                  const SizedBox(),
               Expanded(
                 child: ListView.builder(
                   itemCount: items.length,
                   itemBuilder: (context, index) {
                     final item = items[index];
-                    return IconButton(
-                      icon: Icon(item.icon),
-                      onPressed: () {
-                        item.onTap?.call();
-                      },
+                    return SidebarXCell(
+                      item: item,
+                      theme: t,
+                      extended: controller.extended,
+                      selected: controller.selectedIndex == index,
                     );
                   },
                 ),
               ),
-              // Container(
-              //   height: 200,
-              //   color: Colors.green,
-              // ),
+              footerBuilder?.call(context, controller.extended) ??
+                  const SizedBox()
             ],
           ),
         );

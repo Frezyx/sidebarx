@@ -25,25 +25,42 @@ class MyApp extends StatelessWidget {
               children: [
                 SidebarX(
                   controller: _controller,
-                  theme: const SidebarXTheme(
-                    decoration: BoxDecoration(color: Colors.white),
-                    margin: EdgeInsets.all(10),
+                  theme: SidebarXTheme(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    margin: const EdgeInsets.all(10),
                   ),
+                  headerBuilder: (context, extended) {
+                    return Container(
+                      height: 100,
+                    );
+                  },
                   extendedTheme: const SidebarXTheme(
-                    width: 140,
+                    width: 240,
                     decoration: BoxDecoration(color: Colors.white),
-                    margin: EdgeInsets.all(10),
                   ),
                   items: [
                     SidebarXItem(
                       icon: Icons.home,
+                      label: 'Home',
                       onTap: () {
                         debugPrint('Hello');
                       },
                     ),
-                    const SidebarXItem(icon: Icons.search),
-                    const SidebarXItem(icon: Icons.people),
-                    const SidebarXItem(icon: Icons.favorite),
+                    const SidebarXItem(
+                      icon: Icons.search,
+                      label: 'Search',
+                    ),
+                    const SidebarXItem(
+                      icon: Icons.people,
+                      label: 'People',
+                    ),
+                    const SidebarXItem(
+                      icon: Icons.favorite,
+                      label: 'Favorite',
+                    ),
                   ],
                 ),
                 Expanded(
