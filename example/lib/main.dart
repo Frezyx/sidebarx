@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 
+const primaryColor = Color(0xFF685BFF);
+const canvasColor = Color(0xFF2E2E48);
+const scaffoldBackgroundColor = Color(0xFF464667);
+const accentCanvasColor = Color(0xFF3E3E61);
+
 void main() {
   runApp(MyApp());
 }
@@ -15,10 +20,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: primaryColor,
+        canvasColor: canvasColor,
+        scaffoldBackgroundColor: scaffoldBackgroundColor,
       ),
       home: Scaffold(
-        backgroundColor: Colors.grey,
         body: Stack(
           children: [
             Row(
@@ -26,25 +32,38 @@ class MyApp extends StatelessWidget {
                 SidebarX(
                   controller: _controller,
                   theme: SidebarXTheme(
+                    margin: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: canvasColor,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    margin: const EdgeInsets.all(10),
                     selectedItemDecoration: BoxDecoration(
-                      color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: const Color(0xFF5F5FA7).withOpacity(0.37),
+                      ),
+                      gradient: const LinearGradient(
+                        colors: [accentCanvasColor, canvasColor],
+                      ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          blurRadius: 10,
+                          color: Colors.black.withOpacity(0.28),
+                          blurRadius: 30,
                         )
                       ],
                     ),
+                    iconTheme: const IconThemeData(
+                      color: Colors.white,
+                      size: 20,
+                    ),
                   ),
                   headerBuilder: (context, extended) {
-                    return Container(
+                    return SizedBox(
                       height: 100,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Image.asset('assets/images/avatar.png'),
+                      ),
                     );
                   },
                   extendedTheme: const SidebarXTheme(
@@ -73,32 +92,45 @@ class MyApp extends StatelessWidget {
                     ),
                   ],
                 ),
-                Expanded(
-                  child: ListView.builder(
-                    itemBuilder: (context, index) => Container(
-                      height: 100,
-                      width: double.infinity,
-                      margin: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).cardColor,
-                        boxShadow: const [BoxShadow()],
-                      ),
-                    ),
-                  ),
-                ),
+                const _ScreensExample(),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Align(
-                alignment: Alignment.bottomRight,
-                child: ElevatedButton(
-                  onPressed: () => _controller.toggleExtended(),
-                  child: Text('Extend'),
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: Align(
+            //     alignment: Alignment.bottomRight,
+            //     child: ElevatedButton(
+            //       onPressed: () => _controller.toggleExtended(),
+            //       child: const Text('Extend'),
+            //     ),
+            //   ),
+            // ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ScreensExample extends StatelessWidget {
+  const _ScreensExample({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ListView.builder(
+        padding: const EdgeInsets.only(top: 10),
+        itemBuilder: (context, index) => Container(
+          height: 100,
+          width: double.infinity,
+          margin: const EdgeInsets.only(bottom: 10, right: 10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: Theme.of(context).canvasColor,
+            boxShadow: const [BoxShadow()],
+          ),
         ),
       ),
     );
