@@ -43,7 +43,7 @@ class _SidebarXCellState extends State<SidebarXCell> {
     final textStyle =
         widget.selected ? theme.selectedTextStyle : theme.textStyle;
     final decoration =
-        widget.selected ? theme.selectedItemDecoration : theme.itemDecoration;
+        (widget.selected ? theme.selectedItemDecoration : theme.itemDecoration);
     final textPadding =
         widget.selected ? theme.selectedItemTextPadding : theme.itemTextPadding;
 

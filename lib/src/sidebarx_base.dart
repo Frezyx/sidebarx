@@ -13,7 +13,6 @@ class SidebarX extends StatefulWidget {
     this.separatorBuilder,
     this.toggleButtonBuilder,
     this.showToggleButton = true,
-    this.toggleButtonLabel,
     this.headerDivider,
     this.footerDivider,
   }) : super(key: key);
@@ -32,7 +31,6 @@ class SidebarX extends StatefulWidget {
   final SidebarXBuilder? toggleButtonBuilder;
 
   final bool showToggleButton;
-  final String? toggleButtonLabel;
 
   final Widget? headerDivider;
   final Widget? footerDivider;
@@ -118,9 +116,7 @@ class _SidebarXState extends State<SidebarX>
               widget.footerDivider ?? BaseDivider(theme: t),
               widget.footerBuilder?.call(context, widget.controller.extended) ??
                   const SizedBox(),
-              if (widget.showToggleButton) ...[
-                _buildToggleButton(t),
-              ]
+              if (widget.showToggleButton) _buildToggleButton(t),
             ],
           ),
         );
@@ -135,18 +131,35 @@ class _SidebarXState extends State<SidebarX>
       return buildedToggleButton;
     }
 
-    return SidebarXCell(
-      item: SidebarXItem(
-        icon: Icons.arrow_back_ios,
-        label: widget.toggleButtonLabel,
-      ),
-      theme: sidebarXTheme,
-      animationController: _animationController,
-      extended: widget.controller.extended,
-      selected: false,
+    return InkWell(
+      splashColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      focusColor: Colors.transparent,
       onTap: () {
         widget.controller.toggleExtended();
       },
+      child: Row(
+        mainAxisAlignment: widget.controller.extended
+            ? MainAxisAlignment.end
+            : MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Icon(
+              widget.controller.extended
+                  ? Icons.arrow_back_ios_new
+                  : Icons.arrow_forward_ios,
+              color: sidebarXTheme.iconTheme?.color,
+              size: sidebarXTheme.iconTheme?.size,
+              key: icon1Key,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
+
+const icon1Key = ValueKey('icon1');
+const icon2Key = ValueKey('icon1');
