@@ -4,7 +4,7 @@
 
 <h2 align="center"> Flutter multiplatform navigation sidebar / side navigationbar / drawer widget
 </h2>
-<p align="center">Show some ❤️ and <a href="https://github.com/Frezyx/group_button">star the repo</a> to support the project!</p>
+<p align="center">Show some ❤️ and <a href="https://github.com/Frezyx/sidebarx">star the repo</a> to support the project!</p>
 
 | Mobile | Desktop | Web |
 | :------------: | :------------: | :------------: |
