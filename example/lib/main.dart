@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 
-const primaryColor = Color(0xFF685BFF);
-const canvasColor = Color(0xFF2E2E48);
-const scaffoldBackgroundColor = Color(0xFF464667);
-const accentCanvasColor = Color(0xFF3E3E61);
-
 void main() {
-  runApp(MyApp());
+  runApp(SidebarXExampleApp());
 }
 
-class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+class SidebarXExampleApp extends StatelessWidget {
+  SidebarXExampleApp({Key? key}) : super(key: key);
 
   final _controller = SidebarXController(selectedIndex: 0);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'SidebarX Example',
       theme: ThemeData(
         primaryColor: primaryColor,
         canvasColor: canvasColor,
         scaffoldBackgroundColor: scaffoldBackgroundColor,
+        textTheme: const TextTheme(
+          headline5: TextStyle(
+            color: Colors.white,
+            fontSize: 46,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
       ),
       home: Scaffold(
         body: Row(
@@ -45,7 +47,7 @@ class MyApp extends StatelessWidget {
                 selectedItemDecoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    color: const Color(0xFF5F5FA7).withOpacity(0.37),
+                    color: actionColor.withOpacity(0.37),
                   ),
                   gradient: const LinearGradient(
                     colors: [accentCanvasColor, canvasColor],
@@ -69,6 +71,7 @@ class MyApp extends StatelessWidget {
                 ),
                 margin: EdgeInsets.only(right: 10),
               ),
+              footerDivider: divider,
               headerBuilder: (context, extended) {
                 return SizedBox(
                   height: 100,
@@ -100,7 +103,11 @@ class MyApp extends StatelessWidget {
                 ),
               ],
             ),
-            const _ScreensExample(),
+            Expanded(
+              child: Center(
+                child: _ScreensExample(controller: _controller),
+              ),
+            ),
           ],
         ),
       ),
@@ -111,24 +118,64 @@ class MyApp extends StatelessWidget {
 class _ScreensExample extends StatelessWidget {
   const _ScreensExample({
     Key? key,
+    required this.controller,
   }) : super(key: key);
+
+  final SidebarXController controller;
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        padding: const EdgeInsets.only(top: 10),
-        itemBuilder: (context, index) => Container(
-          height: 100,
-          width: double.infinity,
-          margin: const EdgeInsets.only(bottom: 10, right: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Theme.of(context).canvasColor,
-            boxShadow: const [BoxShadow()],
-          ),
-        ),
-      ),
+    final theme = Theme.of(context);
+    return AnimatedBuilder(
+      animation: controller,
+      builder: (context, child) {
+        switch (controller.selectedIndex) {
+          case 0:
+            return ListView.builder(
+              padding: const EdgeInsets.only(top: 10),
+              itemBuilder: (context, index) => Container(
+                height: 100,
+                width: double.infinity,
+                margin: const EdgeInsets.only(bottom: 10, right: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Theme.of(context).canvasColor,
+                  boxShadow: const [BoxShadow()],
+                ),
+              ),
+            );
+          case 1:
+            return Text(
+              'Search',
+              style: theme.textTheme.headline5,
+            );
+          case 2:
+            return Text(
+              'Peoples',
+              style: theme.textTheme.headline5,
+            );
+          case 3:
+            return Text(
+              'Favorites',
+              style: theme.textTheme.headline5,
+            );
+          default:
+            return Text(
+              'Not found page',
+              style: theme.textTheme.headline5,
+            );
+        }
+      },
     );
   }
 }
+
+const primaryColor = Color(0xFF685BFF);
+const canvasColor = Color(0xFF2E2E48);
+const scaffoldBackgroundColor = Color(0xFF464667);
+const accentCanvasColor = Color(0xFF3E3E61);
+const white = Colors.white;
+final actionColor = const Color(0xFF5F5FA7).withOpacity(0.6);
+
+final divider =
+    Divider(color: actionColor, endIndent: 10, indent: 10, height: 1);
