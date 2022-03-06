@@ -1,3 +1,5 @@
+## 0.2.1
+* - **INFO**: Update docs in README
 ## 0.2.0
 * - **FEAT**: Edit theme configuration 
 * - **FEAT**: Made it possible to use with mobile devices 
