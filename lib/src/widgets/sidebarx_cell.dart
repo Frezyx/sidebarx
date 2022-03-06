@@ -43,7 +43,9 @@ class _SidebarXCellState extends State<SidebarXCell> {
     final textStyle =
         widget.selected ? theme.selectedTextStyle : theme.textStyle;
     final decoration =
-        widget.selected ? theme.selectedItemDecoration : theme.decoration;
+        widget.selected ? theme.selectedItemDecoration : theme.itemDecoration;
+    final textPadding =
+        widget.selected ? theme.selectedItemTextPadding : theme.itemTextPadding;
 
     return GestureDetector(
       onTap: widget.onTap,
@@ -71,11 +73,14 @@ class _SidebarXCellState extends State<SidebarXCell> {
               flex: 6,
               child: FadeTransition(
                 opacity: _animation,
-                child: Text(
-                  widget.item.label ?? '',
-                  style: textStyle,
-                  overflow: TextOverflow.fade,
-                  maxLines: 1,
+                child: Padding(
+                  padding: textPadding ?? EdgeInsets.zero,
+                  child: Text(
+                    widget.item.label ?? '',
+                    style: textStyle,
+                    overflow: TextOverflow.fade,
+                    maxLines: 1,
+                  ),
                 ),
               ),
             ),

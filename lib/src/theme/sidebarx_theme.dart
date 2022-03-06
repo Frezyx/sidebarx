@@ -13,6 +13,8 @@ class SidebarXTheme {
     this.selectedTextStyle,
     this.itemDecoration,
     this.selectedItemDecoration,
+    this.itemTextPadding,
+    this.selectedItemTextPadding,
   });
 
   final double width;
@@ -27,11 +29,13 @@ class SidebarXTheme {
   final TextStyle? selectedTextStyle;
   final BoxDecoration? itemDecoration;
   final BoxDecoration? selectedItemDecoration;
+  final EdgeInsets? itemTextPadding;
+  final EdgeInsets? selectedItemTextPadding;
 
   /// Method to get default flutter theme settings
   SidebarXTheme mergeFlutterTheme(BuildContext context) {
     final theme = Theme.of(context);
-    return SidebarXTheme(
+    final mergedTheme = SidebarXTheme(
       width: width,
       height: height,
       padding: padding,
@@ -45,7 +49,10 @@ class SidebarXTheme {
           theme.textTheme.bodyMedium?.copyWith(color: theme.primaryColor),
       itemDecoration: itemDecoration,
       selectedItemDecoration: selectedItemDecoration,
+      itemTextPadding: itemTextPadding,
+      selectedItemTextPadding: selectedItemTextPadding,
     );
+    return mergedTheme;
   }
 
   SidebarXTheme mergeWith(
@@ -56,6 +63,9 @@ class SidebarXTheme {
       height: height,
       padding: padding,
       margin: margin,
+      itemTextPadding: itemTextPadding ?? theme.itemTextPadding,
+      selectedItemTextPadding:
+          selectedItemTextPadding ?? theme.selectedItemTextPadding,
       decoration: decoration ?? theme.decoration,
       iconTheme: iconTheme ?? theme.iconTheme,
       selectedIconTheme: selectedIconTheme ?? theme.selectedIconTheme,
@@ -79,6 +89,8 @@ class SidebarXTheme {
     TextStyle? selectedTextStyle,
     BoxDecoration? itemDecoration,
     BoxDecoration? selectedItemDecoration,
+    EdgeInsets? itemTextPadding,
+    EdgeInsets? selectedItemTextPadding,
   }) {
     return SidebarXTheme(
       width: width ?? this.width,
@@ -93,6 +105,14 @@ class SidebarXTheme {
       itemDecoration: itemDecoration ?? this.itemDecoration,
       selectedItemDecoration:
           selectedItemDecoration ?? this.selectedItemDecoration,
+      itemTextPadding: itemTextPadding ?? this.itemTextPadding,
+      selectedItemTextPadding:
+          selectedItemTextPadding ?? this.selectedItemTextPadding,
     );
+  }
+
+  @override
+  String toString() {
+    return 'SidebarXTheme(width: $width, height: $height, padding: $padding, margin: $margin, decoration: $decoration, iconTheme: $iconTheme, selectedIconTheme: $selectedIconTheme, textStyle: $textStyle, selectedTextStyle: $selectedTextStyle, itemDecoration: $itemDecoration, selectedItemDecoration: $selectedItemDecoration, itemTextPadding: $itemTextPadding, selectedItemTextPadding: $selectedItemTextPadding)';
   }
 }

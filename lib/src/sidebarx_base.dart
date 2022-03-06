@@ -11,6 +11,11 @@ class SidebarX extends StatefulWidget {
     this.headerBuilder,
     this.footerBuilder,
     this.separatorBuilder,
+    this.toggleButtonBuilder,
+    this.showToggleButton = true,
+    this.toggleButtonLabel,
+    this.headerDivider,
+    this.footerDivider,
   }) : super(key: key);
 
   final SidebarXTheme theme;
@@ -22,9 +27,15 @@ class SidebarX extends StatefulWidget {
   final SidebarXController controller;
 
   final IndexedWidgetBuilder? separatorBuilder;
+  final SidebarXBuilder? headerBuilder;
+  final SidebarXBuilder? footerBuilder;
+  final SidebarXBuilder? toggleButtonBuilder;
 
-  final Widget Function(BuildContext context, bool extended)? headerBuilder;
-  final Widget Function(BuildContext context, bool extended)? footerBuilder;
+  final bool showToggleButton;
+  final String? toggleButtonLabel;
+
+  final Widget? headerDivider;
+  final Widget? footerDivider;
 
   @override
   State<SidebarX> createState() => _SidebarXState();
@@ -82,6 +93,7 @@ class _SidebarXState extends State<SidebarX>
             children: [
               widget.headerBuilder?.call(context, widget.controller.extended) ??
                   const SizedBox(),
+              widget.headerDivider ?? const SizedBox(),
               Expanded(
                 child: ListView.separated(
                   itemCount: widget.items.length,
@@ -103,11 +115,37 @@ class _SidebarXState extends State<SidebarX>
                   },
                 ),
               ),
+              widget.footerDivider ?? BaseDivider(theme: t),
               widget.footerBuilder?.call(context, widget.controller.extended) ??
-                  const SizedBox()
+                  const SizedBox(),
+              if (widget.showToggleButton) ...[
+                _buildToggleButton(t),
+              ]
             ],
           ),
         );
+      },
+    );
+  }
+
+  Widget _buildToggleButton(SidebarXTheme sidebarXTheme) {
+    final buildedToggleButton =
+        widget.toggleButtonBuilder?.call(context, widget.controller.extended);
+    if (buildedToggleButton != null) {
+      return buildedToggleButton;
+    }
+
+    return SidebarXCell(
+      item: SidebarXItem(
+        icon: Icons.arrow_back_ios,
+        label: widget.toggleButtonLabel,
+      ),
+      theme: sidebarXTheme,
+      animationController: _animationController,
+      extended: widget.controller.extended,
+      selected: false,
+      onTap: () {
+        widget.controller.toggleExtended();
       },
     );
   }

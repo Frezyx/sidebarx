@@ -25,86 +25,82 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: scaffoldBackgroundColor,
       ),
       home: Scaffold(
-        body: Stack(
+        body: Row(
           children: [
-            Row(
-              children: [
-                SidebarX(
-                  controller: _controller,
-                  theme: SidebarXTheme(
-                    margin: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: canvasColor,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    selectedItemDecoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: const Color(0xFF5F5FA7).withOpacity(0.37),
-                      ),
-                      gradient: const LinearGradient(
-                        colors: [accentCanvasColor, canvasColor],
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.28),
-                          blurRadius: 30,
-                        )
-                      ],
-                    ),
-                    iconTheme: const IconThemeData(
-                      color: Colors.white,
-                      size: 20,
-                    ),
+            SidebarX(
+              controller: _controller,
+              theme: SidebarXTheme(
+                margin: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: canvasColor,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                textStyle: const TextStyle(color: Colors.white),
+                selectedTextStyle: const TextStyle(color: Colors.white),
+                itemTextPadding: const EdgeInsets.only(left: 20),
+                selectedItemTextPadding: const EdgeInsets.only(left: 20),
+                itemDecoration: BoxDecoration(
+                  border: Border.all(color: canvasColor),
+                ),
+                selectedItemDecoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: const Color(0xFF5F5FA7).withOpacity(0.37),
                   ),
-                  headerBuilder: (context, extended) {
-                    return SizedBox(
-                      height: 100,
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Image.asset('assets/images/avatar.png'),
-                      ),
-                    );
-                  },
-                  extendedTheme: const SidebarXTheme(
-                    width: 200,
-                    decoration: BoxDecoration(color: Colors.white),
+                  gradient: const LinearGradient(
+                    colors: [accentCanvasColor, canvasColor],
                   ),
-                  items: [
-                    SidebarXItem(
-                      icon: Icons.home,
-                      label: 'Home',
-                      onTap: () {
-                        debugPrint('Hello');
-                      },
-                    ),
-                    const SidebarXItem(
-                      icon: Icons.search,
-                      label: 'Search',
-                    ),
-                    const SidebarXItem(
-                      icon: Icons.people,
-                      label: 'People',
-                    ),
-                    const SidebarXItem(
-                      icon: Icons.favorite,
-                      label: 'Favorite',
-                    ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.28),
+                      blurRadius: 30,
+                    )
                   ],
                 ),
-                const _ScreensExample(),
+                iconTheme: const IconThemeData(
+                  color: Colors.white,
+                  size: 20,
+                ),
+              ),
+              extendedTheme: const SidebarXTheme(
+                width: 200,
+                decoration: BoxDecoration(
+                  color: canvasColor,
+                ),
+                margin: EdgeInsets.only(right: 10),
+              ),
+              headerBuilder: (context, extended) {
+                return SizedBox(
+                  height: 100,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Image.asset('assets/images/avatar.png'),
+                  ),
+                );
+              },
+              items: [
+                SidebarXItem(
+                  icon: Icons.home,
+                  label: 'Home',
+                  onTap: () {
+                    debugPrint('Hello');
+                  },
+                ),
+                const SidebarXItem(
+                  icon: Icons.search,
+                  label: 'Search',
+                ),
+                const SidebarXItem(
+                  icon: Icons.people,
+                  label: 'People',
+                ),
+                const SidebarXItem(
+                  icon: Icons.favorite,
+                  label: 'Favorite',
+                ),
               ],
             ),
-            // Padding(
-            //   padding: const EdgeInsets.all(8.0),
-            //   child: Align(
-            //     alignment: Alignment.bottomRight,
-            //     child: ElevatedButton(
-            //       onPressed: () => _controller.toggleExtended(),
-            //       child: const Text('Extend'),
-            //     ),
-            //   ),
-            // ),
+            const _ScreensExample(),
           ],
         ),
       ),
