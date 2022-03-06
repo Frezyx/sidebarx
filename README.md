@@ -2,11 +2,9 @@
   SidebarX 🔥
 </h1>
 
-<h2 align="center"> Flutter multiplatform navigation sidebar / side navigationbar / drawer widget </h2>
-
-<p align="center">
-Show some ❤️ and <a href="https://github.com/Frezyx/group_button">star the repo</a> to support the project!
-</p>
+<h2 align="center"> Flutter multiplatform navigation sidebar / side navigationbar / drawer widget <br>
+<span style="font-size: 0.7em">Show some ❤️ and <a href="https://github.com/Frezyx/group_button">star the repo</a> to support the project!</span>
+</h2>
 
 | iOS | Desktop | Web |
 | :------------: | :------------: | :------------: |
