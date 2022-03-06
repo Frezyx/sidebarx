@@ -1,32 +1,74 @@
 <h1 align="center">
-  SidebarX 🚀
+  SidebarX 🔥
 </h1>
 
 <h2 align="center"> Flutter multiplatform navigation sidebar / side navigationbar / drawer widget </h2>
 
+<p align="center">
+Show some ❤️ and <a href="https://github.com/Frezyx/group_button">star the repo</a> to support the project!
+</p>
+
 | iOS | Desktop | Web |
 | :------------: | :------------: | :------------: |
 | ![Image](example/repo/example_mobile_small.gif) | ![Image](example/repo/example.gif) | ![Image](example/repo/example_web.gif) |
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
 
 ## Getting started
+Follow these steps to use this package
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+### Add dependency
 
-## Usage
+```yaml
+dependencies:
+  sidebarx: ^0.2.0 #latest version
+```
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+### Add import package
 
 ```dart
-const like = 'sample';
+import 'package:sidebarx/sidebarx.dart';
+```
+
+## Easy to use
+The package is designed with maximum adaptation to large screens.<br>
+Therefore, adding a widget to your screen will be very simple.
+```dart
+    Scaffold(
+      body: Row(
+        children: [
+          SidebarX(
+            controller: SidebarXController(selectedIndex: 0),
+            items: const [
+              SidebarXItem(icon: Icons.home, label: 'Home'),
+              SidebarXItem(icon: Icons.search, label: 'Search'),
+            ],
+          ),
+          // Your app screen body
+        ],
+      ),
+    )
+```
+## Use with small mobile screens
+On small screens and mobile devices, you can use the ready-made Sidebar widget as your application's drawer for excellent UX. 
+<br>Otherwise, leave the code unchanged and get the same experience
+
+```dart
+    Scaffold(
+      drawer: SidebarX(
+        controller: SidebarXController(selectedIndex: 0, extended: true),
+        items: const [
+          SidebarXItem(icon: Icons.home, label: 'Home'),
+          SidebarXItem(icon: Icons.search, label: 'Search'),
+        ],
+      ),
+      body: const Center(child: Text('Your app body')),
+    )
 ```
 
 ## Additional information
+The project is under development and ready for your pull-requests and issues 👍<br>
+Thank you for support ❤️
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+<br>
+For help getting started with 😍 Flutter, view
+[online documentation](https://flutter.dev/docs), which offers tutorials, 
+samples, guidance on mobile development, and a full API reference.

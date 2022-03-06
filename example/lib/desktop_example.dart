@@ -152,7 +152,7 @@ class _ScreensExample extends StatelessWidget {
             );
           case 2:
             return Text(
-              'Peoples',
+              'People',
               style: theme.textTheme.headline5,
             );
           case 3:
