@@ -8,7 +8,7 @@
 
 | Mobile | Desktop | Web |
 | :------------: | :------------: | :------------: |
-| ![Image](example/repo/example_mobile_small.gif) | ![Image](example/repo/example.gif) | ![Image](example/repo/example_web.gif) |
+| ![Image](https://github.com/Frezyx/sidebarx/blob/main/example/repo/example_mobile_small.gif?raw=true) | ![Image](https://github.com/Frezyx/sidebarx/blob/main/example/repo/example.gif?raw=true) | ![Image](https://github.com/Frezyx/sidebarx/blob/main/example/repo/example_web.gif?raw=true) |
 
 ## Getting started
 Follow these steps to use this package
