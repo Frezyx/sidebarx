@@ -45,6 +45,13 @@ class _SidebarXState extends State<SidebarX>
 
   @override
   void initState() {
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+    );
+    if (widget.controller.extended) {
+      _animationController.forward();
+    }
     widget.controller.extendStream.listen(
       (extended) {
         if (_animationController.isCompleted) {
@@ -55,17 +62,7 @@ class _SidebarXState extends State<SidebarX>
       },
     );
 
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 300),
-    );
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    widget.controller.dispose();
-    super.dispose();
   }
 
   @override

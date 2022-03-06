@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 class SidebarXController extends ChangeNotifier {
   SidebarXController({
     required int selectedIndex,
-  }) : _selectedIndex = selectedIndex;
+    bool? extended,
+  }) : _selectedIndex = selectedIndex {
+    _setExtedned(extended ?? false);
+  }
 
   int _selectedIndex;
   var _extended = false;
@@ -24,6 +27,11 @@ class SidebarXController extends ChangeNotifier {
   void toggleExtended() {
     _extended = !_extended;
     _extendedController.add(_extended);
+    notifyListeners();
+  }
+
+  void _setExtedned(bool val) {
+    _extended = val;
     notifyListeners();
   }
 
