@@ -113,7 +113,7 @@ class _SidebarXState extends State<SidebarX>
                   },
                 ),
               ),
-              widget.footerDivider ?? BaseDivider(theme: t),
+              widget.footerDivider ?? const SizedBox(),
               widget.footerBuilder?.call(context, widget.controller.extended) ??
                   const SizedBox(),
               if (widget.showToggleButton) _buildToggleButton(t),
@@ -145,14 +145,13 @@ class _SidebarXState extends State<SidebarX>
             : MainAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(14.0),
             child: Icon(
               widget.controller.extended
                   ? Icons.arrow_back_ios_new
                   : Icons.arrow_forward_ios,
               color: sidebarXTheme.iconTheme?.color,
               size: sidebarXTheme.iconTheme?.size,
-              key: icon1Key,
             ),
           ),
         ],
@@ -160,6 +159,3 @@ class _SidebarXState extends State<SidebarX>
     );
   }
 }
-
-const icon1Key = ValueKey('icon1');
-const icon2Key = ValueKey('icon1');

@@ -39,8 +39,8 @@ class SidebarXExampleApp extends StatelessWidget {
                 ),
                 textStyle: const TextStyle(color: Colors.white),
                 selectedTextStyle: const TextStyle(color: Colors.white),
-                itemTextPadding: const EdgeInsets.only(left: 20),
-                selectedItemTextPadding: const EdgeInsets.only(left: 20),
+                itemTextPadding: const EdgeInsets.only(left: 30),
+                selectedItemTextPadding: const EdgeInsets.only(left: 30),
                 itemDecoration: BoxDecoration(
                   border: Border.all(color: canvasColor),
                 ),
@@ -177,5 +177,4 @@ const accentCanvasColor = Color(0xFF3E3E61);
 const white = Colors.white;
 final actionColor = const Color(0xFF5F5FA7).withOpacity(0.6);
 
-final divider =
-    Divider(color: actionColor, endIndent: 10, indent: 10, height: 1);
+final divider = Divider(color: white.withOpacity(0.3), height: 1);
