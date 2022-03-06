@@ -36,8 +36,8 @@ class _SidebarXState extends State<SidebarX>
 
   @override
   void initState() {
-    widget.controller.addListener(
-      () {
+    widget.controller.extendStream.listen(
+      (extended) {
         if (_animationController.isCompleted) {
           _animationController.reverse();
         } else {
@@ -51,6 +51,12 @@ class _SidebarXState extends State<SidebarX>
       duration: const Duration(milliseconds: 300),
     );
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    widget.controller.dispose();
+    super.dispose();
   }
 
   @override
