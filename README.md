@@ -6,7 +6,7 @@
 </h2>
 <p align="center">Show some ❤️ and <a href="https://github.com/Frezyx/group_button">star the repo</a> to support the project!</p>
 
-| iOS | Desktop | Web |
+| Mobile | Desktop | Web |
 | :------------: | :------------: | :------------: |
 | ![Image](example/repo/example_mobile_small.gif) | ![Image](example/repo/example.gif) | ![Image](example/repo/example_web.gif) |
 
