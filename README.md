@@ -6,7 +6,7 @@
 
 | iOS | Desktop | Web |
 | :------------: | :------------: | :------------: |
-| ![Image](example/repo/example_mobile.gif) | ![Image](example/repo/example.gif) | ![Image](example/repo/example_web.gif) |
+| ![Image](example/repo/example_mobile_small.gif) | ![Image](example/repo/example.gif) | ![Image](example/repo/example_web.gif) |
 ## Features
 
 TODO: List what your package can do. Maybe include images, gifs, or videos.
