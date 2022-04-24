@@ -1,5 +1,11 @@
+## 0.2.2
+* - **FIX**: Fix the mergeFlutterTheme function that wasn't using the selectedIconTheme but the iconTheme
+
+ Thanks for [nank1ro](https://github.com/nank1ro)
+
 ## 0.2.1
 * - **INFO**: Update docs in README
+
 ## 0.2.0
 * - **FEAT**: Edit theme configuration 
 * - **FEAT**: Made it possible to use with mobile devices 
