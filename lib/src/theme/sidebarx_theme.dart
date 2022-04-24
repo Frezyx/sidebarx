@@ -42,8 +42,8 @@ class SidebarXTheme {
       margin: margin,
       decoration: decoration ?? BoxDecoration(color: theme.cardColor),
       iconTheme: iconTheme ?? theme.iconTheme,
-      selectedIconTheme:
-          iconTheme ?? theme.iconTheme.copyWith(color: theme.primaryColor),
+      selectedIconTheme: selectedIconTheme ??
+          theme.iconTheme.copyWith(color: theme.primaryColor),
       textStyle: textStyle ?? theme.textTheme.bodyMedium,
       selectedTextStyle: selectedTextStyle ??
           theme.textTheme.bodyMedium?.copyWith(color: theme.primaryColor),
