@@ -1,3 +1,10 @@
+## 0.3.0
+* - **FEAT** Implement padding and margin for item and selected item in SidebarXTheme
+* - **INFO** Update flutter_lints to ^2.0.1
+* - **INFO**: Update example packages
+
+ Thanks for [nank1ro](https://github.com/nank1ro)
+
 ## 0.2.2
 * - **FIX**: Fix the mergeFlutterTheme function that wasn't using the selectedIconTheme but the iconTheme
 

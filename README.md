@@ -17,7 +17,7 @@ Follow these steps to use this package
 
 ```yaml
 dependencies:
-  sidebarx: ^0.2.2
+  sidebarx: ^0.3.0
 ```
 
 ### Add import package
