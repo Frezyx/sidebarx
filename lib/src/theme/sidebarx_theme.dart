@@ -13,6 +13,10 @@ class SidebarXTheme {
     this.selectedTextStyle,
     this.itemDecoration,
     this.selectedItemDecoration,
+    this.itemMargin,
+    this.selectedItemMargin,
+    this.itemPadding,
+    this.selectedItemPadding,
     this.itemTextPadding,
     this.selectedItemTextPadding,
   });
@@ -29,6 +33,10 @@ class SidebarXTheme {
   final TextStyle? selectedTextStyle;
   final BoxDecoration? itemDecoration;
   final BoxDecoration? selectedItemDecoration;
+  final EdgeInsets? itemMargin;
+  final EdgeInsets? selectedItemMargin;
+  final EdgeInsets? itemPadding;
+  final EdgeInsets? selectedItemPadding;
   final EdgeInsets? itemTextPadding;
   final EdgeInsets? selectedItemTextPadding;
 
@@ -49,6 +57,10 @@ class SidebarXTheme {
           theme.textTheme.bodyMedium?.copyWith(color: theme.primaryColor),
       itemDecoration: itemDecoration,
       selectedItemDecoration: selectedItemDecoration,
+      itemMargin: itemMargin,
+      selectedItemMargin: selectedItemMargin,
+      itemPadding: itemPadding,
+      selectedItemPadding: selectedItemPadding,
       itemTextPadding: itemTextPadding,
       selectedItemTextPadding: selectedItemTextPadding,
     );
@@ -71,6 +83,10 @@ class SidebarXTheme {
       selectedIconTheme: selectedIconTheme ?? theme.selectedIconTheme,
       textStyle: textStyle ?? theme.textStyle,
       selectedTextStyle: selectedTextStyle ?? theme.selectedTextStyle,
+      itemMargin: itemMargin ?? theme.itemMargin,
+      selectedItemMargin: selectedItemMargin ?? theme.selectedItemMargin,
+      itemPadding: itemPadding ?? theme.itemPadding,
+      selectedItemPadding: selectedItemPadding ?? theme.selectedItemPadding,
       itemDecoration: itemDecoration ?? theme.itemDecoration,
       selectedItemDecoration:
           selectedItemDecoration ?? theme.selectedItemDecoration,
@@ -89,6 +105,10 @@ class SidebarXTheme {
     TextStyle? selectedTextStyle,
     BoxDecoration? itemDecoration,
     BoxDecoration? selectedItemDecoration,
+    EdgeInsets? itemMargin,
+    EdgeInsets? selectedItemMargin,
+    EdgeInsets? itemPadding,
+    EdgeInsets? selectedItemPadding,
     EdgeInsets? itemTextPadding,
     EdgeInsets? selectedItemTextPadding,
   }) {
@@ -105,6 +125,10 @@ class SidebarXTheme {
       itemDecoration: itemDecoration ?? this.itemDecoration,
       selectedItemDecoration:
           selectedItemDecoration ?? this.selectedItemDecoration,
+      itemMargin: itemMargin ?? this.itemMargin,
+      selectedItemMargin: selectedItemMargin ?? this.selectedItemMargin,
+      itemPadding: itemPadding ?? this.itemPadding,
+      selectedItemPadding: selectedItemPadding ?? this.selectedItemPadding,
       itemTextPadding: itemTextPadding ?? this.itemTextPadding,
       selectedItemTextPadding:
           selectedItemTextPadding ?? this.selectedItemTextPadding,
@@ -113,6 +137,6 @@ class SidebarXTheme {
 
   @override
   String toString() {
-    return 'SidebarXTheme(width: $width, height: $height, padding: $padding, margin: $margin, decoration: $decoration, iconTheme: $iconTheme, selectedIconTheme: $selectedIconTheme, textStyle: $textStyle, selectedTextStyle: $selectedTextStyle, itemDecoration: $itemDecoration, selectedItemDecoration: $selectedItemDecoration, itemTextPadding: $itemTextPadding, selectedItemTextPadding: $selectedItemTextPadding)';
+    return 'SidebarXTheme(width: $width, height: $height, padding: $padding, margin: $margin, decoration: $decoration, iconTheme: $iconTheme, selectedIconTheme: $selectedIconTheme, textStyle: $textStyle, selectedTextStyle: $selectedTextStyle, itemDecoration: $itemDecoration, selectedItemDecoration: $selectedItemDecoration, itemMargin: $itemMargin, selectedItemMargin: $selectedItemMargin, itemPadding: $itemPadding, selectedItemPadding: $selectedItemPadding, itemTextPadding: $itemTextPadding, selectedItemTextPadding: $selectedItemTextPadding)';
   }
 }

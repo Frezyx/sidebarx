@@ -44,6 +44,10 @@ class _SidebarXCellState extends State<SidebarXCell> {
         widget.selected ? theme.selectedTextStyle : theme.textStyle;
     final decoration =
         (widget.selected ? theme.selectedItemDecoration : theme.itemDecoration);
+    final margin =
+        (widget.selected ? theme.selectedItemMargin : theme.itemMargin);
+    final padding =
+        (widget.selected ? theme.selectedItemPadding : theme.itemPadding);
     final textPadding =
         widget.selected ? theme.selectedItemTextPadding : theme.itemTextPadding;
 
@@ -51,8 +55,8 @@ class _SidebarXCellState extends State<SidebarXCell> {
       onTap: widget.onTap,
       child: Container(
         decoration: decoration,
-        padding: const EdgeInsets.all(8),
-        margin: const EdgeInsets.all(4),
+        padding: padding ?? const EdgeInsets.all(8),
+        margin: margin ?? const EdgeInsets.all(4),
         child: Row(
           mainAxisAlignment: widget.extended
               ? MainAxisAlignment.start
