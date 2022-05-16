@@ -3,7 +3,7 @@
 * - **INFO** Update flutter_lints to ^2.0.1
 * - **INFO**: Update example packages
 
- Thanks for [nank1ro](https://github.com/nank1ro)
+ Thanks for [rainbowloop](https://github.com/rainbowloop) from [LEANNOVA](https://github.com/LEANNOVA)
 
 ## 0.2.2
 * - **FIX**: Fix the mergeFlutterTheme function that wasn't using the selectedIconTheme but the iconTheme
