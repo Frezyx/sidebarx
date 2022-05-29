@@ -72,7 +72,10 @@ class _SidebarXCellState extends State<SidebarXCell> {
                 return Spacer(flex: value);
               },
             ),
-            _Icon(item: widget.item, iconTheme: iconTheme),
+            if (widget.item.icon != null)
+              _Icon(item: widget.item, iconTheme: iconTheme)
+            else if (widget.item.iconWidget != null)
+              widget.item.iconWidget!,
             Flexible(
               flex: 6,
               child: FadeTransition(
