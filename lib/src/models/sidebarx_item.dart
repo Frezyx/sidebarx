@@ -2,12 +2,18 @@ import 'package:flutter/cupertino.dart';
 
 class SidebarXItem {
   const SidebarXItem({
-    required this.icon,
     this.label,
+    this.icon,
+    this.iconWidget,
     this.onTap,
-  });
+  }) : assert(
+          (icon != null || iconWidget != null) &&
+              (icon == null || iconWidget == null),
+          'You can create SidebarXItem with IconData? icon or with Widget? iconWidget',
+        );
 
-  final IconData icon;
   final String? label;
+  final IconData? icon;
+  final Widget? iconWidget;
   final Function()? onTap;
 }
