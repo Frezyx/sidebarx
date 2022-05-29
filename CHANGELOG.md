@@ -1,3 +1,6 @@
+## 0.4.0
+* - **FEAT** Implement Widget iconWidget field for custom icons in SidebarXItem
+
 ## 0.3.0
 * - **FEAT** Implement padding and margin for item and selected item in SidebarXTheme
 * - **INFO** Update flutter_lints to ^2.0.1

@@ -102,6 +102,9 @@ class SidebarXExampleApp extends StatelessWidget {
                   icon: Icons.favorite,
                   label: 'Favorite',
                 ),
+                const SidebarXItem(
+                  iconWidget: FlutterLogo(),
+                ),
               ],
             ),
             Expanded(
@@ -158,6 +161,11 @@ class _ScreensExample extends StatelessWidget {
           case 3:
             return Text(
               'Favorites',
+              style: theme.textTheme.headline5,
+            );
+          case 4:
+            return Text(
+              'Custom iconWidget',
               style: theme.textTheme.headline5,
             );
           default:
