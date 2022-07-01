@@ -1,3 +1,8 @@
+## 0.5.0
+* - **FEAT**: Add animation duration property to constructor
+
+ Thanks for [hulohot](https://github.com/hulohot)
+
 ## 0.4.0
 * - **FEAT** Implement Widget iconWidget field for custom icons in SidebarXItem
 
