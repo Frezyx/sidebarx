@@ -15,6 +15,7 @@ class SidebarX extends StatefulWidget {
     this.showToggleButton = true,
     this.headerDivider,
     this.footerDivider,
+    this.animationDuration = 300,
   }) : super(key: key);
 
   final SidebarXTheme theme;
@@ -35,6 +36,8 @@ class SidebarX extends StatefulWidget {
   final Widget? headerDivider;
   final Widget? footerDivider;
 
+  final int animationDuration;
+
   @override
   State<SidebarX> createState() => _SidebarXState();
 }
@@ -47,7 +50,7 @@ class _SidebarXState extends State<SidebarX>
   void initState() {
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 300),
+      duration: Duration(milliseconds: widget.animationDuration),
     );
     if (widget.controller.extended) {
       _animationController.forward();
@@ -78,7 +81,7 @@ class _SidebarXState extends State<SidebarX>
         final t = selectedTheme.mergeFlutterTheme(context);
 
         return AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
+          duration: Duration(milliseconds: widget.animationDuration),
           width: t.width,
           height: t.height,
           padding: t.padding,
