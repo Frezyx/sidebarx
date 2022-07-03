@@ -15,28 +15,45 @@ class SidebarX extends StatefulWidget {
     this.showToggleButton = true,
     this.headerDivider,
     this.footerDivider,
-    this.animationDuration = 300,
+    this.animationDuration = const Duration(milliseconds: 300),
   }) : super(key: key);
 
+  /// Theme of Sidebar
   final SidebarXTheme theme;
 
   /// Theme of extended sidebar
   /// Using [theme] if [extendedTheme] is null
   final SidebarXTheme? extendedTheme;
+
   final List<SidebarXItem> items;
+
+  /// Controller to interact with Sidebar from code
   final SidebarXController controller;
 
+  /// Builder for implement custom seporators between [itmes]
   final IndexedWidgetBuilder? separatorBuilder;
+
+  /// Builder for implement your custom Sidebar header
   final SidebarXBuilder? headerBuilder;
+
+  /// Builder for implement your custom Sidebar footer
   final SidebarXBuilder? footerBuilder;
+
+  /// Builder for toggle button at the bottom of the bar
   final SidebarXBuilder? toggleButtonBuilder;
 
+  /// Sidebar showing toggle button if value [true]
+  /// not showing if value [false]
   final bool showToggleButton;
 
+  /// Divider between header and [items]
   final Widget? headerDivider;
+
+  /// Divider footer header and [items]
   final Widget? footerDivider;
 
-  final int animationDuration;
+  /// Togglin animation duration
+  final Duration animationDuration;
 
   @override
   State<SidebarX> createState() => _SidebarXState();
@@ -50,7 +67,7 @@ class _SidebarXState extends State<SidebarX>
   void initState() {
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: widget.animationDuration),
+      duration: widget.animationDuration,
     );
     if (widget.controller.extended) {
       _animationController.forward();
@@ -81,7 +98,7 @@ class _SidebarXState extends State<SidebarX>
         final t = selectedTheme.mergeFlutterTheme(context);
 
         return AnimatedContainer(
-          duration: Duration(milliseconds: widget.animationDuration),
+          duration: widget.animationDuration,
           width: t.width,
           height: t.height,
           padding: t.padding,
