@@ -21,23 +21,55 @@ class SidebarXTheme {
     this.selectedItemTextPadding,
   });
 
+  /// [SidebarX] width
   final double width;
+
+  /// [SidebarX] height
   final double height;
+
+  /// [SidebarX] padding
   final EdgeInsets padding;
+
+  /// [SidebarX] margin
   final EdgeInsets margin;
+
+  /// [SidebarX] decoration
   final BoxDecoration? decoration;
 
+  /// Unselected [SidebarXItem] icons theme
   final IconThemeData? iconTheme;
+
+  /// Selected [SidebarXItem] icon theme
   final IconThemeData? selectedIconTheme;
+
+  /// Unselected [SidebarXItem] text style
   final TextStyle? textStyle;
+
+  /// Selected [SidebarXItem] text  style
   final TextStyle? selectedTextStyle;
+
+  /// Unselected item [SidebarXItem] decoration
   final BoxDecoration? itemDecoration;
+
+  /// Selected item [SidebarXItem] decoration
   final BoxDecoration? selectedItemDecoration;
+
+  /// Unselected item [SidebarXItem] marging
   final EdgeInsets? itemMargin;
+
+  /// Selected item [SidebarXItem] marging
   final EdgeInsets? selectedItemMargin;
+
+  /// Unselected item [SidebarXItem] padding
   final EdgeInsets? itemPadding;
+
+  /// Selected item [SidebarXItem] padding
   final EdgeInsets? selectedItemPadding;
+
+  /// Unselected item [SidebarXItem] text padding
   final EdgeInsets? itemTextPadding;
+
+  /// Selected item [SidebarXItem] text padding
   final EdgeInsets? selectedItemTextPadding;
 
   /// Method to get default flutter theme settings
@@ -67,6 +99,7 @@ class SidebarXTheme {
     return mergedTheme;
   }
 
+  /// Merges two themes together
   SidebarXTheme mergeWith(
     SidebarXTheme theme,
   ) {
@@ -93,6 +126,7 @@ class SidebarXTheme {
     );
   }
 
+  /// Defautl copyWith method
   SidebarXTheme copyWith({
     double? width,
     double? height,
@@ -133,10 +167,5 @@ class SidebarXTheme {
       selectedItemTextPadding:
           selectedItemTextPadding ?? this.selectedItemTextPadding,
     );
-  }
-
-  @override
-  String toString() {
-    return 'SidebarXTheme(width: $width, height: $height, padding: $padding, margin: $margin, decoration: $decoration, iconTheme: $iconTheme, selectedIconTheme: $selectedIconTheme, textStyle: $textStyle, selectedTextStyle: $selectedTextStyle, itemDecoration: $itemDecoration, selectedItemDecoration: $selectedItemDecoration, itemMargin: $itemMargin, selectedItemMargin: $selectedItemMargin, itemPadding: $itemPadding, selectedItemPadding: $selectedItemPadding, itemTextPadding: $itemTextPadding, selectedItemTextPadding: $selectedItemTextPadding)';
   }
 }
