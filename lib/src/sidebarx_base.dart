@@ -18,7 +18,7 @@ class SidebarX extends StatefulWidget {
     this.animationDuration = const Duration(milliseconds: 300),
   }) : super(key: key);
 
-  /// Theme of Sidebar
+  /// Default theme of Sidebar
   final SidebarXTheme theme;
 
   /// Theme of extended sidebar
