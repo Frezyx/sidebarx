@@ -1,3 +1,7 @@
+## 0.6.0
+* **FIX**: Make animationDuration property Duration type
+* **INFO**: Add simple documentation
+
 ## 0.5.0
 * - **FEAT**: Add animation duration property to constructor
 
