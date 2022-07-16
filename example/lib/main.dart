@@ -39,7 +39,7 @@ class SidebarXExampleApp extends StatelessWidget {
                     title: Text(_getTitleByIndex(_controller.selectedIndex)),
                     leading: IconButton(
                       onPressed: () {
-                        _controller.toggleExtended();
+                        _controller.setExtended(true);
                         _key.currentState?.openDrawer();
                       },
                       icon: const Icon(Icons.menu),
