@@ -8,7 +8,7 @@ void main() {
 class SidebarXExampleApp extends StatelessWidget {
   SidebarXExampleApp({Key? key}) : super(key: key);
 
-  final _controller = SidebarXController(selectedIndex: 0);
+  final _controller = SidebarXController(selectedIndex: 0, extended: true);
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +38,12 @@ class SidebarXExampleApp extends StatelessWidget {
                   color: canvasColor,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                textStyle: const TextStyle(color: Colors.white),
+                textStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
                 selectedTextStyle: const TextStyle(color: Colors.white),
                 itemTextPadding: const EdgeInsets.only(left: 30),
                 selectedItemTextPadding: const EdgeInsets.only(left: 30),
                 itemDecoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: canvasColor),
                 ),
                 selectedItemDecoration: BoxDecoration(
@@ -60,7 +61,11 @@ class SidebarXExampleApp extends StatelessWidget {
                     )
                   ],
                 ),
-                iconTheme: const IconThemeData(
+                iconTheme: IconThemeData(
+                  color: Colors.white.withOpacity(0.7),
+                  size: 20,
+                ),
+                selectedIconTheme: const IconThemeData(
                   color: Colors.white,
                   size: 20,
                 ),
@@ -87,7 +92,7 @@ class SidebarXExampleApp extends StatelessWidget {
                   icon: Icons.home,
                   label: 'Home',
                   onTap: () {
-                    debugPrint('Hello');
+                    debugPrint('Home');
                   },
                 ),
                 const SidebarXItem(
@@ -103,7 +108,8 @@ class SidebarXExampleApp extends StatelessWidget {
                   label: 'Favorite',
                 ),
                 const SidebarXItem(
-                  iconWidget: FlutterLogo(),
+                  iconWidget: FlutterLogo(size: 20),
+                  label: 'Flutter',
                 ),
               ],
             ),
