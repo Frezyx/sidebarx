@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
+import 'package:sidebarx/src/widgets/widgets.dart';
 
 class SidebarX extends StatefulWidget {
   const SidebarX({
