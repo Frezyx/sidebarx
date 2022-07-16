@@ -17,7 +17,7 @@ Follow these steps to use this package
 
 ```yaml
 dependencies:
-  sidebarx: ^0.6.0
+  sidebarx: ^0.7.0
 ```
 
 ### Add import package
@@ -65,6 +65,15 @@ On small screens and mobile devices, you can use the ready-made Sidebar widget a
 ## Additional information
 The project is under development and ready for your pull-requests and issues 👍<br>
 Thank you for support ❤️
+
+<br>
+<div align="center" >
+  <p>Thanks to all contributors of this package</p>
+  <a href="https://github.com/Frezyx/sidebarx/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=Frezyx/sidebarx" />
+  </a>
+</div>
+<br>
 
 <br>
 For help getting started with 😍 Flutter, view

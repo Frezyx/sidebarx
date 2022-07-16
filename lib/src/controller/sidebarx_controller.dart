@@ -24,6 +24,12 @@ class SidebarXController extends ChangeNotifier {
   }
 
   bool get extended => _extended;
+  void setExtended(bool extended) {
+    _extended = extended;
+    _extendedController.add(extended);
+    notifyListeners();
+  }
+
   void toggleExtended() {
     _extended = !_extended;
     _extendedController.add(_extended);

@@ -10,7 +10,7 @@ on:
       - main
       - dev
 jobs:
-  bind:
+  sidebarx:
     runs-on: ubuntu-latest
 
     steps:
