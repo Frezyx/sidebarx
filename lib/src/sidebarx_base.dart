@@ -150,6 +150,7 @@ class _SidebarXState extends State<SidebarX>
     }
 
     return InkWell(
+      key: const Key('sidebarx_toggle_button'),
       splashColor: Colors.transparent,
       hoverColor: Colors.transparent,
       highlightColor: Colors.transparent,
