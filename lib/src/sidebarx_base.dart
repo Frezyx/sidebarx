@@ -59,10 +59,10 @@ class SidebarX extends StatefulWidget {
   final Duration animationDuration;
 
   ///Collapse Icon
-  final IconData? collapseIcon;
+  final IconData collapseIcon;
 
   ///Extend Icon
-  final IconData? extendIcon;
+  final IconData extendIcon;
 
   @override
   State<SidebarX> createState() => _SidebarXState();
@@ -153,8 +153,8 @@ class _SidebarXState extends State<SidebarX>
 
   Widget _buildToggleButton(
     SidebarXTheme sidebarXTheme,
-    IconData? collapseIcon,
-    IconData? extendIcon,
+    IconData collapseIcon,
+    IconData extendIcon,
   ) {
     final buildedToggleButton =
         widget.toggleButtonBuilder?.call(context, widget.controller.extended);
