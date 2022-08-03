@@ -51,47 +51,51 @@ class _SidebarXCellState extends State<SidebarXCell> {
     final textPadding =
         widget.selected ? theme.selectedItemTextPadding : theme.itemTextPadding;
 
-    return GestureDetector(
-      onTap: widget.onTap,
-      child: Container(
-        decoration: decoration,
-        padding: padding ?? const EdgeInsets.all(8),
-        margin: margin ?? const EdgeInsets.all(4),
-        child: Row(
-          mainAxisAlignment: widget.extended
-              ? MainAxisAlignment.start
-              : MainAxisAlignment.center,
-          children: [
-            AnimatedBuilder(
-              animation: _animation,
-              builder: (context, _) {
-                final value = ((1 - _animation.value) * 6).toInt();
-                if (value <= 0) {
-                  return const SizedBox();
-                }
-                return Spacer(flex: value);
-              },
-            ),
-            if (widget.item.icon != null)
-              _Icon(item: widget.item, iconTheme: iconTheme)
-            else if (widget.item.iconWidget != null)
-              widget.item.iconWidget!,
-            Flexible(
-              flex: 6,
-              child: FadeTransition(
-                opacity: _animation,
-                child: Padding(
-                  padding: textPadding ?? EdgeInsets.zero,
-                  child: Text(
-                    widget.item.label ?? '',
-                    style: textStyle,
-                    overflow: TextOverflow.fade,
-                    maxLines: 1,
+    return MouseRegion(
+      onEnter: (e) => debugPrint(e.toString()),
+      onExit: (e) => debugPrint(e.toString()),
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: Container(
+          decoration: decoration,
+          padding: padding ?? const EdgeInsets.all(8),
+          margin: margin ?? const EdgeInsets.all(4),
+          child: Row(
+            mainAxisAlignment: widget.extended
+                ? MainAxisAlignment.start
+                : MainAxisAlignment.center,
+            children: [
+              AnimatedBuilder(
+                animation: _animation,
+                builder: (context, _) {
+                  final value = ((1 - _animation.value) * 6).toInt();
+                  if (value <= 0) {
+                    return const SizedBox();
+                  }
+                  return Spacer(flex: value);
+                },
+              ),
+              if (widget.item.icon != null)
+                _Icon(item: widget.item, iconTheme: iconTheme)
+              else if (widget.item.iconWidget != null)
+                widget.item.iconWidget!,
+              Flexible(
+                flex: 6,
+                child: FadeTransition(
+                  opacity: _animation,
+                  child: Padding(
+                    padding: textPadding ?? EdgeInsets.zero,
+                    child: Text(
+                      widget.item.label ?? '',
+                      style: textStyle,
+                      overflow: TextOverflow.fade,
+                      maxLines: 1,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
