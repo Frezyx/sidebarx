@@ -1,3 +1,7 @@
+## 0.9.0
+* **FEAT**: Implement SystemMouseCursors.click for Cell widget
+* **FEAT**: Implement hoverColor field for Cell widget
+
 ## 0.8.0
 * **FEAT**: Implement collapseIcon and extendIcon fields for simple toogle icon customization
 
