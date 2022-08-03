@@ -17,6 +17,8 @@ class SidebarX extends StatefulWidget {
     this.headerDivider,
     this.footerDivider,
     this.animationDuration = const Duration(milliseconds: 300),
+    this.collapseIcon = Icons.arrow_back_ios_new,
+    this.extendIcon = Icons.arrow_forward_ios,
   }) : super(key: key);
 
   /// Default theme of Sidebar
@@ -55,6 +57,12 @@ class SidebarX extends StatefulWidget {
 
   /// Togglin animation duration
   final Duration animationDuration;
+
+  ///Collapse Icon
+  final IconData collapseIcon;
+
+  ///Extend Icon
+  final IconData extendIcon;
 
   @override
   State<SidebarX> createState() => _SidebarXState();
@@ -134,7 +142,8 @@ class _SidebarXState extends State<SidebarX>
               widget.footerDivider ?? const SizedBox(),
               widget.footerBuilder?.call(context, widget.controller.extended) ??
                   const SizedBox(),
-              if (widget.showToggleButton) _buildToggleButton(t),
+              if (widget.showToggleButton)
+                _buildToggleButton(t, widget.collapseIcon, widget.extendIcon),
             ],
           ),
         );
@@ -142,7 +151,11 @@ class _SidebarXState extends State<SidebarX>
     );
   }
 
-  Widget _buildToggleButton(SidebarXTheme sidebarXTheme) {
+  Widget _buildToggleButton(
+    SidebarXTheme sidebarXTheme,
+    IconData collapseIcon,
+    IconData extendIcon,
+  ) {
     final buildedToggleButton =
         widget.toggleButtonBuilder?.call(context, widget.controller.extended);
     if (buildedToggleButton != null) {
@@ -166,9 +179,7 @@ class _SidebarXState extends State<SidebarX>
           Padding(
             padding: const EdgeInsets.all(14.0),
             child: Icon(
-              widget.controller.extended
-                  ? Icons.arrow_back_ios_new
-                  : Icons.arrow_forward_ios,
+              widget.controller.extended ? collapseIcon : extendIcon,
               color: sidebarXTheme.iconTheme?.color,
               size: sidebarXTheme.iconTheme?.size,
             ),
