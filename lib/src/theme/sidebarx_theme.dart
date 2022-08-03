@@ -19,6 +19,7 @@ class SidebarXTheme {
     this.selectedItemPadding,
     this.itemTextPadding,
     this.selectedItemTextPadding,
+    this.hoverColor,
   });
 
   /// [SidebarX] width
@@ -72,6 +73,10 @@ class SidebarXTheme {
   /// Selected item [SidebarXItem] text padding
   final EdgeInsets? selectedItemTextPadding;
 
+  /// Background color of [SidebarXItem] when the mouse
+  /// cursor hover over an item
+  final Color? hoverColor;
+
   /// Method to get default flutter theme settings
   SidebarXTheme mergeFlutterTheme(BuildContext context) {
     final theme = Theme.of(context);
@@ -95,6 +100,7 @@ class SidebarXTheme {
       selectedItemPadding: selectedItemPadding,
       itemTextPadding: itemTextPadding,
       selectedItemTextPadding: selectedItemTextPadding,
+      hoverColor: hoverColor ?? theme.hoverColor,
     );
     return mergedTheme;
   }
@@ -123,6 +129,7 @@ class SidebarXTheme {
       itemDecoration: itemDecoration ?? theme.itemDecoration,
       selectedItemDecoration:
           selectedItemDecoration ?? theme.selectedItemDecoration,
+      hoverColor: hoverColor ?? theme.hoverColor,
     );
   }
 
@@ -145,6 +152,7 @@ class SidebarXTheme {
     EdgeInsets? selectedItemPadding,
     EdgeInsets? itemTextPadding,
     EdgeInsets? selectedItemTextPadding,
+    Color? hoverColor,
   }) {
     return SidebarXTheme(
       width: width ?? this.width,
@@ -166,6 +174,7 @@ class SidebarXTheme {
       itemTextPadding: itemTextPadding ?? this.itemTextPadding,
       selectedItemTextPadding:
           selectedItemTextPadding ?? this.selectedItemTextPadding,
+      hoverColor: hoverColor ?? this.hoverColor,
     );
   }
 }
