@@ -1,3 +1,8 @@
+## 0.8.0
+* **FEAT**: Implement collapseIcon and extendIcon fields for simple toogle icon customization
+
+ Thanks for [HaveANiceDay33](https://github.com/HaveANiceDay33)
+
 ## 0.7.0
 * **FEAT**: Implement setExtended method to controller
 * **INFO**: Implement tests for controller and SidebarX base widget
