@@ -25,6 +25,7 @@ class SidebarXCell extends StatefulWidget {
 
 class _SidebarXCellState extends State<SidebarXCell> {
   late Animation<double> _animation;
+  var _hovered = false;
 
   @override
   void initState() {
@@ -52,12 +53,14 @@ class _SidebarXCellState extends State<SidebarXCell> {
         widget.selected ? theme.selectedItemTextPadding : theme.itemTextPadding;
 
     return MouseRegion(
-      onEnter: (e) => debugPrint(e.toString()),
-      onExit: (e) => debugPrint(e.toString()),
+      onEnter: (_) => _onEnteredCellZone(),
+      onExit: (_) => _onExitCellZone(),
       child: GestureDetector(
         onTap: widget.onTap,
         child: Container(
-          decoration: decoration,
+          decoration: decoration?.copyWith(
+            color: _hovered ? theme.hoverColor : null,
+          ),
           padding: padding ?? const EdgeInsets.all(8),
           margin: margin ?? const EdgeInsets.all(4),
           child: Row(
@@ -99,6 +102,14 @@ class _SidebarXCellState extends State<SidebarXCell> {
         ),
       ),
     );
+  }
+
+  void _onEnteredCellZone() {
+    setState(() => _hovered = true);
+  }
+
+  void _onExitCellZone() {
+    setState(() => _hovered = false);
   }
 }
 
