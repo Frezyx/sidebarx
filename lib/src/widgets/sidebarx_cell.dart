@@ -55,6 +55,7 @@ class _SidebarXCellState extends State<SidebarXCell> {
     return MouseRegion(
       onEnter: (_) => _onEnteredCellZone(),
       onExit: (_) => _onExitCellZone(),
+      cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: widget.onTap,
         child: Container(
