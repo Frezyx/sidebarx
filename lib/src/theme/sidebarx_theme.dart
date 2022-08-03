@@ -100,7 +100,7 @@ class SidebarXTheme {
       selectedItemPadding: selectedItemPadding,
       itemTextPadding: itemTextPadding,
       selectedItemTextPadding: selectedItemTextPadding,
-      hoverColor: theme.hoverColor,
+      hoverColor: hoverColor ?? theme.hoverColor,
     );
     return mergedTheme;
   }

@@ -85,7 +85,7 @@ class ExampleSidebarX extends StatelessWidget {
           color: canvasColor,
           borderRadius: BorderRadius.circular(20),
         ),
-        hoverColor: Colors.white.withOpacity(0.5),
+        hoverColor: scaffoldBackgroundColor,
         textStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
         selectedTextStyle: const TextStyle(color: Colors.white),
         itemTextPadding: const EdgeInsets.only(left: 30),

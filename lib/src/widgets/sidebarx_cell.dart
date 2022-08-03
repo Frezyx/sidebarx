@@ -59,7 +59,7 @@ class _SidebarXCellState extends State<SidebarXCell> {
         onTap: widget.onTap,
         child: Container(
           decoration: decoration?.copyWith(
-            color: _hovered ? theme.hoverColor : null,
+            color: _hovered && !widget.selected ? theme.hoverColor : null,
           ),
           padding: padding ?? const EdgeInsets.all(8),
           margin: margin ?? const EdgeInsets.all(4),
