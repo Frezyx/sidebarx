@@ -10,6 +10,18 @@
 | :------------: | :------------: | :------------: |
 | ![Image](https://github.com/Frezyx/sidebarx/blob/main/example/repo/example_mobile_small.gif?raw=true) | ![Image](https://github.com/Frezyx/sidebarx/blob/main/example/repo/example.gif?raw=true) | ![Image](https://github.com/Frezyx/sidebarx/blob/main/example/repo/example_web.gif?raw=true) |
 
+<p align="center">
+  <a href="https://pub.dev/packages/sidebarx"><img src="https://img.shields.io/pub/v/sidebarx.svg" alt="Pub"></a>
+  <a href="https://github.com/Frezyx/sidebarx"><img src="https://img.shields.io/github/stars/Frezyx/sidebarx.svg?style=flat&logo=github&label=stars" alt="Star on Github"></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
+  <a href="https://github.com/Frezyx/sidebarx"><img src="https://hits.dwyl.com/Frezyx/sidebarx.svg?style=flat" alt="Repository views"></a>
+</p>
+<p align="center">
+  <a href="https://pub.dev/packages/sidebarx/score"><img src="https://badges.bar/sidebarx/likes" alt="Pub likes"></a>
+  <a href="https://pub.dev/packages/sidebarx/score"><img src="https://badges.bar/sidebarx/popularity" alt="Pub popularity"></a>
+  <a href="https://pub.dev/packages/sidebarx/score"><img src="https://badges.bar/sidebarx/pub%20points" alt="Pub points"></a>
+</p>
+
 ## Getting started
 Follow these steps to use this package
 
