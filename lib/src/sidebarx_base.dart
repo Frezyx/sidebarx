@@ -188,4 +188,10 @@ class _SidebarXState extends State<SidebarX>
       ),
     );
   }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
 }
