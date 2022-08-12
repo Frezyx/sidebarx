@@ -1,3 +1,8 @@
+## 0.10.0
+* **Fix**: Implement AnimationController disposing
+
+ Thanks for [xnxaxo](https://github.com/xnxaxo)
+
 ## 0.9.0
 * **FEAT**: Implement SystemMouseCursors.click for Cell widget
 * **FEAT**: Implement hoverColor field for Cell widget
