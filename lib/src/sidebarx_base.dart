@@ -70,7 +70,7 @@ class SidebarX extends StatefulWidget {
 
 class _SidebarXState extends State<SidebarX>
     with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
+  AnimationController? _animationController;
 
   @override
   void initState() {
@@ -79,14 +79,16 @@ class _SidebarXState extends State<SidebarX>
       duration: widget.animationDuration,
     );
     if (widget.controller.extended) {
-      _animationController.forward();
+      _animationController?.forward();
+    } else {
+      _animationController?.reverse();
     }
     widget.controller.extendStream.listen(
       (extended) {
-        if (_animationController.isCompleted) {
-          _animationController.reverse();
+        if (_animationController?.isCompleted ?? false) {
+          _animationController?.reverse();
         } else {
-          _animationController.forward();
+          _animationController?.forward();
         }
       },
     );
@@ -128,7 +130,7 @@ class _SidebarXState extends State<SidebarX>
                     return SidebarXCell(
                       item: item,
                       theme: t,
-                      animationController: _animationController,
+                      animationController: _animationController!,
                       extended: widget.controller.extended,
                       selected: widget.controller.selectedIndex == index,
                       onTap: () {
@@ -191,7 +193,8 @@ class _SidebarXState extends State<SidebarX>
 
   @override
   void dispose() {
-    _animationController.dispose();
+    _animationController?.dispose();
+    _animationController = null;
     super.dispose();
   }
 }
