@@ -1,5 +1,8 @@
+## 0.11.0
+* **FIX**: AnimationController disposing completed fix
+
 ## 0.10.0
-* **Fix**: Implement AnimationController disposing
+* **FIX**: Implement AnimationController disposing
 
  Thanks for [xnxaxo](https://github.com/xnxaxo)
 
