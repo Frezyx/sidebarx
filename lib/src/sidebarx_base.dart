@@ -171,6 +171,7 @@ class _SidebarXState extends State<SidebarX>
       highlightColor: Colors.transparent,
       focusColor: Colors.transparent,
       onTap: () {
+        if (_animationController!.isAnimating) return;
         widget.controller.toggleExtended();
       },
       child: Row(
