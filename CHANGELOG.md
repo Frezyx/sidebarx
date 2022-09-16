@@ -1,3 +1,9 @@
+## 0.12.0
+* **FIX** Bug on items position
+When a user open and closes the collapsed menu quickly, the position of the items menu becomes wrong in las version
+
+ Thanks for [MonsterOfCode](https://github.com/MonsterOfCode)
+
 ## 0.11.0
 * **FIX**: AnimationController disposing completed fix
 
