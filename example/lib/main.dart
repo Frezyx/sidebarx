@@ -21,7 +21,7 @@ class SidebarXExampleApp extends StatelessWidget {
         canvasColor: canvasColor,
         scaffoldBackgroundColor: scaffoldBackgroundColor,
         textTheme: const TextTheme(
-          headline5: TextStyle(
+          headlineSmall: TextStyle(
             color: Colors.white,
             fontSize: 46,
             fontWeight: FontWeight.w800,
@@ -154,11 +154,21 @@ class ExampleSidebarX extends StatelessWidget {
         ),
         const SidebarXItem(
           icon: Icons.favorite,
-          label: 'Favorite',
+          label: 'Favorites',
         ),
         const SidebarXItem(
           iconWidget: FlutterLogo(size: 20),
           label: 'Flutter',
+        ),
+      ],
+      footerItems: const [
+        SidebarXItem(
+          icon: Icons.person,
+          label: 'Profile',
+        ),
+        SidebarXItem(
+          icon: Icons.settings,
+          label: 'Settings',
         ),
       ],
     );
@@ -198,7 +208,7 @@ class _ScreensExample extends StatelessWidget {
           default:
             return Text(
               pageTitle,
-              style: theme.textTheme.headline5,
+              style: theme.textTheme.headlineSmall,
             );
         }
       },
@@ -218,6 +228,10 @@ String _getTitleByIndex(int index) {
       return 'Favorites';
     case 4:
       return 'Custom iconWidget';
+    case 5:
+      return 'Profile';
+    case 6:
+      return 'Settings';
     default:
       return 'Not found page';
   }
