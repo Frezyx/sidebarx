@@ -20,7 +20,7 @@ class SidebarXExampleApp extends StatelessWidget {
         canvasColor: canvasColor,
         scaffoldBackgroundColor: scaffoldBackgroundColor,
         textTheme: const TextTheme(
-          headline5: TextStyle(
+          headlineSmall: TextStyle(
             color: Colors.white,
             fontSize: 46,
             fontWeight: FontWeight.w800,
@@ -100,7 +100,7 @@ class SidebarXExampleApp extends StatelessWidget {
                 ),
                 const SidebarXItem(
                   icon: Icons.favorite,
-                  label: 'Favorite',
+                  label: 'Favorites',
                 ),
               ],
             ),
@@ -148,22 +148,32 @@ class _ScreensExample extends StatelessWidget {
           case 1:
             return Text(
               'Search',
-              style: theme.textTheme.headline5,
+              style: theme.textTheme.headlineSmall,
             );
           case 2:
             return Text(
               'People',
-              style: theme.textTheme.headline5,
+              style: theme.textTheme.headlineSmall,
             );
           case 3:
             return Text(
               'Favorites',
-              style: theme.textTheme.headline5,
+              style: theme.textTheme.headlineSmall,
+            );
+          case 4:
+            return Text(
+              'Profile',
+              style: theme.textTheme.headlineSmall,
+            );
+          case 5:
+            return Text(
+              'Settings',
+              style: theme.textTheme.headlineSmall,
             );
           default:
             return Text(
               'Not found page',
-              style: theme.textTheme.headline5,
+              style: theme.textTheme.headlineSmall,
             );
         }
       },
