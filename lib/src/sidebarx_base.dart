@@ -135,10 +135,7 @@ class _SidebarXState extends State<SidebarX>
                       animationController: _animationController!,
                       extended: widget.controller.extended,
                       selected: widget.controller.selectedIndex == index,
-                      onTap: () {
-                        item.onTap?.call();
-                        widget.controller.selectIndex(index);
-                      },
+                      onTap: () => _onItemSelected(item, index),
                     );
                   },
                 ),
@@ -164,13 +161,7 @@ class _SidebarXState extends State<SidebarX>
                               widget.footerItems.length -
                               index -
                               1,
-                      onTap: () {
-                        item.onTap?.call();
-                        widget.controller.selectIndex(widget.items.length +
-                            widget.footerItems.length -
-                            index -
-                            1);
-                      },
+                      onTap: () => _onFooterItemSelected(item, index),
                     );
                   },
                 ),
@@ -182,6 +173,17 @@ class _SidebarXState extends State<SidebarX>
         );
       },
     );
+  }
+
+  void _onFooterItemSelected(SidebarXItem item, int index) {
+    item.onTap?.call();
+    widget.controller.selectIndex(
+        widget.items.length + widget.footerItems.length - index - 1);
+  }
+
+  void _onItemSelected(SidebarXItem item, int index) {
+    item.onTap?.call();
+    widget.controller.selectIndex(index);
   }
 
   Widget _buildToggleButton(
