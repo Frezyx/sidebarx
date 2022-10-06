@@ -161,16 +161,6 @@ class ExampleSidebarX extends StatelessWidget {
           label: 'Flutter',
         ),
       ],
-      footerItems: const [
-        SidebarXItem(
-          icon: Icons.person,
-          label: 'Profile',
-        ),
-        SidebarXItem(
-          icon: Icons.settings,
-          label: 'Settings',
-        ),
-      ],
     );
   }
 }

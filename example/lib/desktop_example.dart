@@ -103,16 +103,6 @@ class SidebarXExampleApp extends StatelessWidget {
                   label: 'Favorites',
                 ),
               ],
-              footerItems: const [
-                SidebarXItem(
-                  icon: Icons.person,
-                  label: 'Profile',
-                ),
-                SidebarXItem(
-                  icon: Icons.settings,
-                  label: 'Settings',
-                ),
-              ],
             ),
             Expanded(
               child: Center(
