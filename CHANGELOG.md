@@ -1,3 +1,9 @@
+## 0.13.0
+* **FEAT** Impement footerItems field 
+This provides adding footer items to the sidebar that are listed just above the expand icon
+
+ Thanks for [DavidCatalano](https://github.com/DavidCatalano)
+
 ## 0.12.0
 * **FIX** Bug on items position
 When a user open and closes the collapsed menu quickly, the position of the items menu becomes wrong in las version
