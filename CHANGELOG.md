@@ -1,8 +1,11 @@
+## 0.14.0
+* **FIX** sidebar menu items not occupying the whole height available
+
 ## 0.13.0
 * **FEAT** Impement footerItems field 
 This provides adding footer items to the sidebar that are listed just above the expand icon
 
- Thanks for [DavidCatalano](https://github.com/DavidCatalano)
+Thanks for [DavidCatalano](https://github.com/DavidCatalano)
 
 ## 0.12.0
 * **FIX** Bug on items position
