@@ -143,29 +143,30 @@ class _SidebarXState extends State<SidebarX>
               widget.footerDivider ?? const SizedBox(),
               widget.footerBuilder?.call(context, widget.controller.extended) ??
                   const SizedBox(),
-              Expanded(
-                child: ListView.separated(
-                  reverse: true,
-                  itemCount: widget.footerItems.length,
-                  separatorBuilder: widget.separatorBuilder ??
-                      (_, __) => const SizedBox(height: 8),
-                  itemBuilder: (context, index) {
-                    final item = widget.footerItems.reversed.toList()[index];
-                    return SidebarXCell(
-                      item: item,
-                      theme: t,
-                      animationController: _animationController!,
-                      extended: widget.controller.extended,
-                      selected: widget.controller.selectedIndex ==
-                          widget.items.length +
-                              widget.footerItems.length -
-                              index -
-                              1,
-                      onTap: () => _onFooterItemSelected(item, index),
-                    );
-                  },
+              if (widget.footerItems.isNotEmpty)
+                Expanded(
+                  child: ListView.separated(
+                    reverse: true,
+                    itemCount: widget.footerItems.length,
+                    separatorBuilder: widget.separatorBuilder ??
+                        (_, __) => const SizedBox(height: 8),
+                    itemBuilder: (context, index) {
+                      final item = widget.footerItems.reversed.toList()[index];
+                      return SidebarXCell(
+                        item: item,
+                        theme: t,
+                        animationController: _animationController!,
+                        extended: widget.controller.extended,
+                        selected: widget.controller.selectedIndex ==
+                            widget.items.length +
+                                widget.footerItems.length -
+                                index -
+                                1,
+                        onTap: () => _onFooterItemSelected(item, index),
+                      );
+                    },
+                  ),
                 ),
-              ),
               if (widget.showToggleButton)
                 _buildToggleButton(t, widget.collapseIcon, widget.extendIcon),
             ],
