@@ -1,3 +1,26 @@
+## 0.14.0
+* **FIX** sidebar menu items not occupying the whole height available
+
+## 0.13.0
+* **FEAT** Impement footerItems field 
+This provides adding footer items to the sidebar that are listed just above the expand icon
+
+Thanks for [DavidCatalano](https://github.com/DavidCatalano)
+
+## 0.12.0
+* **FIX** Bug on items position
+When a user open and closes the collapsed menu quickly, the position of the items menu becomes wrong in las version
+
+ Thanks for [MonsterOfCode](https://github.com/MonsterOfCode)
+
+## 0.11.0
+* **FIX**: AnimationController disposing completed fix
+
+## 0.10.0
+* **FIX**: Implement AnimationController disposing
+
+ Thanks for [xnxaxo](https://github.com/xnxaxo)
+
 ## 0.9.0
 * **FEAT**: Implement SystemMouseCursors.click for Cell widget
 * **FEAT**: Implement hoverColor field for Cell widget
