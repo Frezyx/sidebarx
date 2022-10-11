@@ -7,6 +7,7 @@ class SidebarX extends StatefulWidget {
     Key? key,
     required this.controller,
     this.items = const [],
+    this.footerItems = const [],
     this.theme = const SidebarXTheme(),
     this.extendedTheme,
     this.headerBuilder,
@@ -29,6 +30,7 @@ class SidebarX extends StatefulWidget {
   final SidebarXTheme? extendedTheme;
 
   final List<SidebarXItem> items;
+  final List<SidebarXItem> footerItems;
 
   /// Controller to interact with Sidebar from code
   final SidebarXController controller;
@@ -70,7 +72,7 @@ class SidebarX extends StatefulWidget {
 
 class _SidebarXState extends State<SidebarX>
     with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
+  AnimationController? _animationController;
 
   @override
   void initState() {
@@ -79,14 +81,16 @@ class _SidebarXState extends State<SidebarX>
       duration: widget.animationDuration,
     );
     if (widget.controller.extended) {
-      _animationController.forward();
+      _animationController?.forward();
+    } else {
+      _animationController?.reverse();
     }
     widget.controller.extendStream.listen(
       (extended) {
-        if (_animationController.isCompleted) {
-          _animationController.reverse();
+        if (_animationController?.isCompleted ?? false) {
+          _animationController?.reverse();
         } else {
-          _animationController.forward();
+          _animationController?.forward();
         }
       },
     );
@@ -128,13 +132,10 @@ class _SidebarXState extends State<SidebarX>
                     return SidebarXCell(
                       item: item,
                       theme: t,
-                      animationController: _animationController,
+                      animationController: _animationController!,
                       extended: widget.controller.extended,
                       selected: widget.controller.selectedIndex == index,
-                      onTap: () {
-                        item.onTap?.call();
-                        widget.controller.selectIndex(index);
-                      },
+                      onTap: () => _onItemSelected(item, index),
                     );
                   },
                 ),
@@ -142,6 +143,30 @@ class _SidebarXState extends State<SidebarX>
               widget.footerDivider ?? const SizedBox(),
               widget.footerBuilder?.call(context, widget.controller.extended) ??
                   const SizedBox(),
+              if (widget.footerItems.isNotEmpty)
+                Expanded(
+                  child: ListView.separated(
+                    reverse: true,
+                    itemCount: widget.footerItems.length,
+                    separatorBuilder: widget.separatorBuilder ??
+                        (_, __) => const SizedBox(height: 8),
+                    itemBuilder: (context, index) {
+                      final item = widget.footerItems.reversed.toList()[index];
+                      return SidebarXCell(
+                        item: item,
+                        theme: t,
+                        animationController: _animationController!,
+                        extended: widget.controller.extended,
+                        selected: widget.controller.selectedIndex ==
+                            widget.items.length +
+                                widget.footerItems.length -
+                                index -
+                                1,
+                        onTap: () => _onFooterItemSelected(item, index),
+                      );
+                    },
+                  ),
+                ),
               if (widget.showToggleButton)
                 _buildToggleButton(t, widget.collapseIcon, widget.extendIcon),
             ],
@@ -149,6 +174,17 @@ class _SidebarXState extends State<SidebarX>
         );
       },
     );
+  }
+
+  void _onFooterItemSelected(SidebarXItem item, int index) {
+    item.onTap?.call();
+    widget.controller.selectIndex(
+        widget.items.length + widget.footerItems.length - index - 1);
+  }
+
+  void _onItemSelected(SidebarXItem item, int index) {
+    item.onTap?.call();
+    widget.controller.selectIndex(index);
   }
 
   Widget _buildToggleButton(
@@ -169,6 +205,7 @@ class _SidebarXState extends State<SidebarX>
       highlightColor: Colors.transparent,
       focusColor: Colors.transparent,
       onTap: () {
+        if (_animationController!.isAnimating) return;
         widget.controller.toggleExtended();
       },
       child: Row(
@@ -187,5 +224,12 @@ class _SidebarXState extends State<SidebarX>
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _animationController?.dispose();
+    _animationController = null;
+    super.dispose();
   }
 }
