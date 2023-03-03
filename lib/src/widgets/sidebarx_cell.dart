@@ -58,6 +58,7 @@ class _SidebarXCellState extends State<SidebarXCell> {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: widget.onTap,
+        behavior: HitTestBehavior.opaque,
         child: Container(
           decoration: decoration?.copyWith(
             color: _hovered && !widget.selected ? theme.hoverColor : null,
