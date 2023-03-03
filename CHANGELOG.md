@@ -1,3 +1,8 @@
+## 0.15.0
+* **FIX** clicking on a blank area does not respond
+
+Thanks to [bai-3](https://github.com/bai-3)
+
 ## 0.14.0
 * **FIX** sidebar menu items not occupying the whole height available
 
@@ -5,13 +10,13 @@
 * **FEAT** Impement footerItems field 
 This provides adding footer items to the sidebar that are listed just above the expand icon
 
-Thanks for [DavidCatalano](https://github.com/DavidCatalano)
+Thanks to [DavidCatalano](https://github.com/DavidCatalano)
 
 ## 0.12.0
 * **FIX** Bug on items position
 When a user open and closes the collapsed menu quickly, the position of the items menu becomes wrong in las version
 
- Thanks for [MonsterOfCode](https://github.com/MonsterOfCode)
+ Thanks to [MonsterOfCode](https://github.com/MonsterOfCode)
 
 ## 0.11.0
 * **FIX**: AnimationController disposing completed fix
@@ -19,7 +24,7 @@ When a user open and closes the collapsed menu quickly, the position of the item
 ## 0.10.0
 * **FIX**: Implement AnimationController disposing
 
- Thanks for [xnxaxo](https://github.com/xnxaxo)
+ Thanks to [xnxaxo](https://github.com/xnxaxo)
 
 ## 0.9.0
 * **FEAT**: Implement SystemMouseCursors.click for Cell widget
@@ -28,7 +33,7 @@ When a user open and closes the collapsed menu quickly, the position of the item
 ## 0.8.0
 * **FEAT**: Implement collapseIcon and extendIcon fields for simple toogle icon customization
 
- Thanks for [HaveANiceDay33](https://github.com/HaveANiceDay33)
+ Thanks to [HaveANiceDay33](https://github.com/HaveANiceDay33)
 
 ## 0.7.0
 * **FEAT**: Implement setExtended method to controller
@@ -41,7 +46,7 @@ When a user open and closes the collapsed menu quickly, the position of the item
 ## 0.5.0
 * - **FEAT**: Add animation duration property to constructor
 
- Thanks for [hulohot](https://github.com/hulohot)
+ Thanks to [hulohot](https://github.com/hulohot)
 
 ## 0.4.0
 * - **FEAT** Implement Widget iconWidget field for custom icons in SidebarXItem
@@ -51,12 +56,12 @@ When a user open and closes the collapsed menu quickly, the position of the item
 * - **INFO** Update flutter_lints to ^2.0.1
 * - **INFO**: Update example packages
 
- Thanks for [rainbowloop](https://github.com/rainbowloop) from [LEANNOVA](https://github.com/LEANNOVA)
+ Thanks to [rainbowloop](https://github.com/rainbowloop) from [LEANNOVA](https://github.com/LEANNOVA)
 
 ## 0.2.2
 * - **FIX**: Fix the mergeFlutterTheme function that wasn't using the selectedIconTheme but the iconTheme
 
- Thanks for [nank1ro](https://github.com/nank1ro)
+ Thanks to [nank1ro](https://github.com/nank1ro)
 
 ## 0.2.1
 * - **INFO**: Update docs in README
