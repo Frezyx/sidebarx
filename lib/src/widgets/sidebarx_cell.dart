@@ -41,8 +41,11 @@ class _SidebarXCellState extends State<SidebarXCell> {
     final theme = widget.theme;
     final iconTheme =
         widget.selected ? theme.selectedIconTheme : theme.iconTheme;
-    final textStyle =
-        widget.selected ? theme.selectedTextStyle : theme.textStyle;
+    final textStyle = widget.selected
+        ? theme.selectedTextStyle
+        : (_hovered)
+            ? theme.hoverTextStyle
+            : theme.textStyle;
     final decoration =
         (widget.selected ? theme.selectedItemDecoration : theme.itemDecoration);
     final margin =
