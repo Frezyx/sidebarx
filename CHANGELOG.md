@@ -1,3 +1,8 @@
+## 0.16.0
+* **FIX** Add **hoverTextStyle** property
+
+Thanks to [MaurizioSodano](https://github.com/MaurizioSodano)
+
 ## 0.15.0
 * **FIX** clicking on a blank area does not respond
 
