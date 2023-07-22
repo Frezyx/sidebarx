@@ -1,3 +1,6 @@
+## 0.16.1
+- Add topics in pubspec.yaml
+
 ## 0.16.0
 * **FIX** Add **hoverTextStyle** property
 
