@@ -1,3 +1,6 @@
+## 0.16.2
+- Update packages and add repository in pubspec.yaml
+
 ## 0.16.1
 - Add topics in pubspec.yaml
 
