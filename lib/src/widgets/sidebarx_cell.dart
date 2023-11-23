@@ -10,6 +10,7 @@ class SidebarXCell extends StatefulWidget {
     required this.theme,
     required this.onTap,
     required this.onLongPress,
+    required this.onSecondaryTap,
     required this.animationController,
   }) : super(key: key);
 
@@ -19,6 +20,7 @@ class SidebarXCell extends StatefulWidget {
   final SidebarXTheme theme;
   final VoidCallback onTap;
   final VoidCallback onLongPress;
+  final VoidCallback onSecondaryTap;
   final AnimationController animationController;
 
   @override
@@ -64,6 +66,7 @@ class _SidebarXCellState extends State<SidebarXCell> {
       child: GestureDetector(
         onTap: widget.onTap,
         onLongPress: widget.onLongPress,
+        onSecondaryTap: widget.onSecondaryTap,
         behavior: HitTestBehavior.opaque,
         child: Container(
           decoration: decoration?.copyWith(

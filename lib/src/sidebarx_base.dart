@@ -137,6 +137,8 @@ class _SidebarXState extends State<SidebarX>
                       selected: widget.controller.selectedIndex == index,
                       onTap: () => _onItemSelected(item, index),
                       onLongPress: () => _onItemLongPressSelected(item, index),
+                      onSecondaryTap: () =>
+                          _onItemSecondaryTapSelected(item, index),
                     );
                   },
                 ),
@@ -166,6 +168,8 @@ class _SidebarXState extends State<SidebarX>
                         onTap: () => _onFooterItemSelected(item, index),
                         onLongPress: () =>
                             _onFooterItemLongPressSelected(item, index),
+                        onSecondaryTap: () =>
+                            _onFooterItemSecondaryTapSelected(item, index),
                       );
                     },
                   ),
@@ -189,6 +193,10 @@ class _SidebarXState extends State<SidebarX>
     item.onLongPress?.call();
   }
 
+  void _onFooterItemSecondaryTapSelected(SidebarXItem item, int index) {
+    item.onSecondaryTap?.call();
+  }
+
   void _onItemSelected(SidebarXItem item, int index) {
     item.onTap?.call();
     widget.controller.selectIndex(index);
@@ -196,6 +204,10 @@ class _SidebarXState extends State<SidebarX>
 
   void _onItemLongPressSelected(SidebarXItem item, int index) {
     item.onLongPress?.call();
+  }
+
+  void _onItemSecondaryTapSelected(SidebarXItem item, int index) {
+    item.onSecondaryTap?.call();
   }
 
   Widget _buildToggleButton(
