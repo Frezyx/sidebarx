@@ -1,3 +1,8 @@
+## 0.16.3
+* Add onLongPress, onSecondaryTap for SidebarXCell (SidebarX item)
+
+Thanks to [MaurizioSodano](https://github.com/MaurizioSodano)
+
 ## 0.16.2
 - Update packages and add repository in pubspec.yaml
 
