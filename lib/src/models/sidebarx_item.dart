@@ -6,6 +6,8 @@ class SidebarXItem {
     this.icon,
     this.iconWidget,
     this.onTap,
+    this.onLongPress,
+    this.onSecondaryTap,
   }) : assert(
           (icon != null || iconWidget != null) &&
               (icon == null || iconWidget == null),
@@ -16,4 +18,6 @@ class SidebarXItem {
   final IconData? icon;
   final Widget? iconWidget;
   final Function()? onTap;
+  final Function()? onLongPress;
+  final Function()? onSecondaryTap;
 }
