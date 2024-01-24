@@ -63,6 +63,7 @@ class _SidebarXCellState extends State<SidebarXCell> {
       decoration: decoration,
       margin: margin ?? const EdgeInsets.all(4),
       child: Material(
+        type: MaterialType.transparency,
         borderRadius: decoration?.borderRadius,
         child: InkWell(
           borderRadius:
