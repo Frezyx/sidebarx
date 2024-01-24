@@ -22,6 +22,8 @@ class SidebarXTheme {
     this.hoverColor,
     this.hoverTextStyle,
     this.selectedHoverColor,
+    this.splashColor,
+    this.selectedSplashColor,
   });
 
   /// [SidebarX] width
@@ -83,6 +85,12 @@ class SidebarXTheme {
   /// cursor hover over a selected item
   final Color? selectedHoverColor;
 
+  /// Unselected item splash color of [SidebarXItem]
+  final Color? splashColor;
+
+  /// Selected item splash color of [SidebarXItem]
+  final Color? selectedSplashColor;
+
   /// [SidebarXItem] text  style  when the mouse
   /// cursor hover over an item
   final TextStyle? hoverTextStyle;
@@ -114,6 +122,8 @@ class SidebarXTheme {
       selectedHoverColor: selectedHoverColor ?? theme.hoverColor,
       hoverTextStyle: hoverTextStyle ??
           theme.textTheme.bodyMedium?.copyWith(color: theme.primaryColor),
+      splashColor: splashColor ?? theme.splashColor,
+      selectedSplashColor: selectedSplashColor ?? theme.splashColor,
     );
     return mergedTheme;
   }
@@ -144,6 +154,8 @@ class SidebarXTheme {
           selectedItemDecoration ?? theme.selectedItemDecoration,
       hoverColor: hoverColor ?? theme.hoverColor,
       selectedHoverColor: selectedHoverColor ?? theme.selectedHoverColor,
+      splashColor: splashColor ?? theme.splashColor,
+      selectedSplashColor: selectedSplashColor ?? theme.selectedSplashColor,
       hoverTextStyle: hoverTextStyle ?? theme.hoverTextStyle,
     );
   }
@@ -169,6 +181,8 @@ class SidebarXTheme {
     EdgeInsets? selectedItemTextPadding,
     Color? hoverColor,
     Color? selectedHoverColor,
+    Color? splashColor,
+    Color? selectedSplashColor,
     TextStyle? hoverTextStyle,
   }) {
     return SidebarXTheme(
@@ -193,6 +207,8 @@ class SidebarXTheme {
           selectedItemTextPadding ?? this.selectedItemTextPadding,
       hoverColor: hoverColor ?? this.hoverColor,
       selectedHoverColor: selectedHoverColor ?? this.selectedHoverColor,
+      splashColor: splashColor ?? this.splashColor,
+      selectedSplashColor: selectedSplashColor ?? this.selectedSplashColor,
       hoverTextStyle: hoverTextStyle ?? this.hoverTextStyle,
     );
   }

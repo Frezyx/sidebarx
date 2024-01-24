@@ -1,5 +1,5 @@
 ## 0.17.0
-* **FEAT** Add `secondaryHoverColor` property to `SidebarXTheme`
+* **FEAT** Add `secondaryHoverColor`, `splashColor`, and `selectedSplashColor` properties to `SidebarXTheme`
 * **FEAT** Use Material's `InkWell` instead of `GestureDetector` for `SidebarXCell`, which adds
   a default hover color and a splash animation when pressed.
 
