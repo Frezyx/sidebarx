@@ -24,6 +24,10 @@ class SidebarXTheme {
     this.selectedHoverColor,
     this.splashColor,
     this.selectedSplashColor,
+    this.highlightColor,
+    this.selectedHighlightColor,
+    this.focusColor,
+    this.selectedFocusColor,
   });
 
   /// [SidebarX] width
@@ -95,6 +99,18 @@ class SidebarXTheme {
   /// cursor hover over an item
   final TextStyle? hoverTextStyle;
 
+  /// Unselected item highlight color of [SidebarXItem]'s InkWell
+  final Color? highlightColor;
+
+  /// Selected item highlight color of [SidebarXItem]'s InkWell
+  final Color? selectedHighlightColor;
+
+  /// Unselected item focus color of [SidebarXItem]
+  final Color? focusColor;
+
+  /// Selected item focus color of [SidebarXItem]
+  final Color? selectedFocusColor;
+
   /// Method to get default flutter theme settings
   SidebarXTheme mergeFlutterTheme(BuildContext context) {
     final theme = Theme.of(context);
@@ -124,6 +140,10 @@ class SidebarXTheme {
           theme.textTheme.bodyMedium?.copyWith(color: theme.primaryColor),
       splashColor: splashColor ?? theme.splashColor,
       selectedSplashColor: selectedSplashColor ?? theme.splashColor,
+      highlightColor: highlightColor ?? theme.highlightColor,
+      selectedHighlightColor: selectedHighlightColor ?? theme.highlightColor,
+      focusColor: focusColor ?? theme.focusColor,
+      selectedFocusColor: selectedFocusColor ?? theme.focusColor,
     );
     return mergedTheme;
   }
@@ -157,6 +177,11 @@ class SidebarXTheme {
       splashColor: splashColor ?? theme.splashColor,
       selectedSplashColor: selectedSplashColor ?? theme.selectedSplashColor,
       hoverTextStyle: hoverTextStyle ?? theme.hoverTextStyle,
+      highlightColor: highlightColor ?? theme.highlightColor,
+      selectedHighlightColor:
+          selectedHighlightColor ?? theme.selectedHighlightColor,
+      focusColor: focusColor ?? theme.focusColor,
+      selectedFocusColor: selectedFocusColor ?? theme.selectedFocusColor,
     );
   }
 
@@ -184,6 +209,10 @@ class SidebarXTheme {
     Color? splashColor,
     Color? selectedSplashColor,
     TextStyle? hoverTextStyle,
+    Color? highlightColor,
+    Color? selectedHighlightColor,
+    Color? focusColor,
+    Color? selectedFocusColor,
   }) {
     return SidebarXTheme(
       width: width ?? this.width,
@@ -210,6 +239,11 @@ class SidebarXTheme {
       splashColor: splashColor ?? this.splashColor,
       selectedSplashColor: selectedSplashColor ?? this.selectedSplashColor,
       hoverTextStyle: hoverTextStyle ?? this.hoverTextStyle,
+      highlightColor: highlightColor ?? this.highlightColor,
+      selectedHighlightColor:
+          selectedHighlightColor ?? this.selectedHighlightColor,
+      focusColor: focusColor ?? this.focusColor,
+      selectedFocusColor: selectedFocusColor ?? this.selectedFocusColor,
     );
   }
 }

@@ -60,6 +60,10 @@ class _SidebarXCellState extends State<SidebarXCell> {
         widget.selected ? theme.selectedItemTextPadding : theme.itemTextPadding;
     final splashColor =
         widget.selected ? theme.selectedSplashColor : theme.splashColor;
+    final highlightColor =
+        widget.selected ? theme.selectedHighlightColor : theme.highlightColor;
+    final focusColor =
+        widget.selected ? theme.selectedFocusColor : theme.focusColor;
 
     return Container(
       decoration: decoration,
@@ -68,6 +72,8 @@ class _SidebarXCellState extends State<SidebarXCell> {
         type: MaterialType.transparency,
         borderRadius: decoration?.borderRadius,
         child: InkWell(
+          focusColor: focusColor,
+          highlightColor: highlightColor,
           splashColor: splashColor,
           borderRadius:
               decoration?.borderRadius?.resolve(Directionality.of(context)),
