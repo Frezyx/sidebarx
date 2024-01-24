@@ -3,6 +3,8 @@
 * **FEAT** Use Material's `InkWell` instead of `GestureDetector` for `SidebarXCell`, which adds
   a default hover color and a splash animation when pressed.
 
+Thanks to [getBoolean](https://github.com/getBoolean)
+
 ## 0.16.3
 * Add onLongPress, onSecondaryTap for SidebarXCell (SidebarX item)
 
