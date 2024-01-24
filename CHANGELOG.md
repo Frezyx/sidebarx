@@ -4,6 +4,7 @@
 * **FEAT** Add `secondaryHoverColor`, `splashColor`, `selectedSplashColor`,
   `highlightColor`, `selectedHighlightColor`, `focusColor`, and `selectedFocusColor`
   properties to `SidebarXTheme`
+* **FEAT** Enable default toggle button interaction colors `hoverColor`, `highlightColor`, and `focusColor`
 
 Thanks to [getBoolean](https://github.com/getBoolean)
 

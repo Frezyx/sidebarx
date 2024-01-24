@@ -221,30 +221,40 @@ class _SidebarXState extends State<SidebarX>
       return buildedToggleButton;
     }
 
-    return InkWell(
-      key: const Key('sidebarx_toggle_button'),
-      splashColor: Colors.transparent,
-      hoverColor: Colors.transparent,
-      highlightColor: Colors.transparent,
-      focusColor: Colors.transparent,
-      onTap: () {
-        if (_animationController!.isAnimating) return;
-        widget.controller.toggleExtended();
-      },
-      child: Row(
-        mainAxisAlignment: widget.controller.extended
-            ? MainAxisAlignment.end
-            : MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(14.0),
-            child: Icon(
-              widget.controller.extended ? collapseIcon : extendIcon,
-              color: sidebarXTheme.iconTheme?.color,
-              size: sidebarXTheme.iconTheme?.size,
-            ),
+    return AnimatedContainer(
+      duration: widget.animationDuration,
+      clipBehavior: Clip.antiAlias,
+      decoration: sidebarXTheme.decoration?.copyWith(
+          borderRadius: sidebarXTheme.decoration?.borderRadius
+              ?.resolve(Directionality.of(context))
+              .copyWith(topLeft: Radius.zero, topRight: Radius.zero)),
+      child: Material(
+        type: MaterialType.transparency,
+        shape: sidebarXTheme.decoration?.border,
+        animationDuration: widget.animationDuration,
+        child: InkWell(
+          key: const Key('sidebarx_toggle_button'),
+          splashColor: Colors.transparent,
+          onTap: () {
+            if (_animationController!.isAnimating) return;
+            widget.controller.toggleExtended();
+          },
+          child: Row(
+            mainAxisAlignment: widget.controller.extended
+                ? MainAxisAlignment.end
+                : MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: Icon(
+                  widget.controller.extended ? collapseIcon : extendIcon,
+                  color: sidebarXTheme.iconTheme?.color,
+                  size: sidebarXTheme.iconTheme?.size,
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
