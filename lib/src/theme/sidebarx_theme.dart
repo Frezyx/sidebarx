@@ -21,6 +21,7 @@ class SidebarXTheme {
     this.selectedItemTextPadding,
     this.hoverColor,
     this.hoverTextStyle,
+    this.selectedHoverColor,
   });
 
   /// [SidebarX] width
@@ -78,6 +79,10 @@ class SidebarXTheme {
   /// cursor hover over an item
   final Color? hoverColor;
 
+  /// Background color of [SidebarXItem] when the mouse
+  /// cursor hover over a selected item
+  final Color? selectedHoverColor;
+
   /// [SidebarXItem] text  style  when the mouse
   /// cursor hover over an item
   final TextStyle? hoverTextStyle;
@@ -106,6 +111,7 @@ class SidebarXTheme {
       itemTextPadding: itemTextPadding,
       selectedItemTextPadding: selectedItemTextPadding,
       hoverColor: hoverColor ?? theme.hoverColor,
+      selectedHoverColor: selectedHoverColor ?? theme.hoverColor,
       hoverTextStyle: hoverTextStyle ??
           theme.textTheme.bodyMedium?.copyWith(color: theme.primaryColor),
     );
@@ -137,6 +143,7 @@ class SidebarXTheme {
       selectedItemDecoration:
           selectedItemDecoration ?? theme.selectedItemDecoration,
       hoverColor: hoverColor ?? theme.hoverColor,
+      selectedHoverColor: selectedHoverColor ?? theme.selectedHoverColor,
       hoverTextStyle: hoverTextStyle ?? theme.hoverTextStyle,
     );
   }
@@ -161,6 +168,7 @@ class SidebarXTheme {
     EdgeInsets? itemTextPadding,
     EdgeInsets? selectedItemTextPadding,
     Color? hoverColor,
+    Color? selectedHoverColor,
     TextStyle? hoverTextStyle,
   }) {
     return SidebarXTheme(
@@ -184,6 +192,7 @@ class SidebarXTheme {
       selectedItemTextPadding:
           selectedItemTextPadding ?? this.selectedItemTextPadding,
       hoverColor: hoverColor ?? this.hoverColor,
+      selectedHoverColor: selectedHoverColor ?? this.selectedHoverColor,
       hoverTextStyle: hoverTextStyle ?? this.hoverTextStyle,
     );
   }
