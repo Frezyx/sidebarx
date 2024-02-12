@@ -37,10 +37,10 @@ class SidebarXTheme {
   final double height;
 
   /// [SidebarX] padding
-  final EdgeInsets padding;
+  final EdgeInsetsGeometry padding;
 
   /// [SidebarX] margin
-  final EdgeInsets margin;
+  final EdgeInsetsGeometry margin;
 
   /// [SidebarX] decoration
   final BoxDecoration? decoration;
@@ -64,22 +64,22 @@ class SidebarXTheme {
   final BoxDecoration? selectedItemDecoration;
 
   /// Unselected item [SidebarXItem] marging
-  final EdgeInsets? itemMargin;
+  final EdgeInsetsGeometry? itemMargin;
 
   /// Selected item [SidebarXItem] marging
-  final EdgeInsets? selectedItemMargin;
+  final EdgeInsetsGeometry? selectedItemMargin;
 
   /// Unselected item [SidebarXItem] padding
-  final EdgeInsets? itemPadding;
+  final EdgeInsetsGeometry? itemPadding;
 
   /// Selected item [SidebarXItem] padding
-  final EdgeInsets? selectedItemPadding;
+  final EdgeInsetsGeometry? selectedItemPadding;
 
   /// Unselected item [SidebarXItem] text padding
-  final EdgeInsets? itemTextPadding;
+  final EdgeInsetsGeometry? itemTextPadding;
 
   /// Selected item [SidebarXItem] text padding
-  final EdgeInsets? selectedItemTextPadding;
+  final EdgeInsetsGeometry? selectedItemTextPadding;
 
   /// Background color of [SidebarXItem] when the mouse
   /// cursor hover over an item
