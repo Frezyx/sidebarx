@@ -1,7 +1,7 @@
 ## 0.17.0
 * **FEAT** Use Material's `InkWell` instead of `GestureDetector` for `SidebarXCell`, which adds
   a default hover color and a splash animation when pressed.
-* **FEAT** Add `secondaryHoverColor`, `splashColor`, `selectedSplashColor`,
+* **FEAT** Add `selectedHoverColor`, `splashColor`, `selectedSplashColor`,
   `highlightColor`, `selectedHighlightColor`, `focusColor`, and `selectedFocusColor`
   properties to `SidebarXTheme`
 * **FEAT** Enable default toggle button interaction colors `hoverColor`, `highlightColor`, and `focusColor`
