@@ -7,6 +7,7 @@ class SidebarXTheme {
     this.padding = EdgeInsets.zero,
     this.margin = EdgeInsets.zero,
     this.decoration,
+    this.toggleButtonDecoration,
     this.iconTheme,
     this.selectedIconTheme,
     this.textStyle,
@@ -44,6 +45,9 @@ class SidebarXTheme {
 
   /// [SidebarX] decoration
   final BoxDecoration? decoration;
+
+  /// [SidebarX] decoration
+  final BoxDecoration? toggleButtonDecoration;
 
   /// Unselected [SidebarXItem] icons theme
   final IconThemeData? iconTheme;
@@ -114,12 +118,21 @@ class SidebarXTheme {
   /// Method to get default flutter theme settings
   SidebarXTheme mergeFlutterTheme(BuildContext context) {
     final theme = Theme.of(context);
+    var boxDecoration = decoration ?? BoxDecoration(color: theme.cardColor);
+    final defaultToggleButtonDecoration = boxDecoration.copyWith(
+      borderRadius: ((boxDecoration)
+          .borderRadius
+          ?.resolve(Directionality.of(context))
+          .copyWith(topLeft: Radius.zero, topRight: Radius.zero)),
+    );
     final mergedTheme = SidebarXTheme(
       width: width,
       height: height,
       padding: padding,
       margin: margin,
-      decoration: decoration ?? BoxDecoration(color: theme.cardColor),
+      decoration: boxDecoration,
+      toggleButtonDecoration:
+          toggleButtonDecoration ?? defaultToggleButtonDecoration,
       iconTheme: iconTheme ?? theme.iconTheme,
       selectedIconTheme: selectedIconTheme ??
           theme.iconTheme.copyWith(color: theme.primaryColor),
@@ -161,6 +174,7 @@ class SidebarXTheme {
       selectedItemTextPadding:
           selectedItemTextPadding ?? theme.selectedItemTextPadding,
       decoration: decoration ?? theme.decoration,
+      toggleButtonDecoration: toggleButtonDecoration ?? theme.toggleButtonDecoration,
       iconTheme: iconTheme ?? theme.iconTheme,
       selectedIconTheme: selectedIconTheme ?? theme.selectedIconTheme,
       textStyle: textStyle ?? theme.textStyle,
@@ -192,6 +206,7 @@ class SidebarXTheme {
     EdgeInsets? padding,
     EdgeInsets? margin,
     BoxDecoration? decoration,
+    BoxDecoration? toggleButtonDecoration,
     IconThemeData? iconTheme,
     IconThemeData? selectedIconTheme,
     TextStyle? textStyle,
@@ -220,6 +235,7 @@ class SidebarXTheme {
       padding: padding ?? this.padding,
       margin: margin ?? this.margin,
       decoration: decoration ?? this.decoration,
+      toggleButtonDecoration: toggleButtonDecoration ?? this.toggleButtonDecoration,
       iconTheme: iconTheme ?? this.iconTheme,
       selectedIconTheme: selectedIconTheme ?? this.selectedIconTheme,
       textStyle: textStyle ?? this.textStyle,
