@@ -118,7 +118,7 @@ class SidebarXTheme {
   /// Method to get default flutter theme settings
   SidebarXTheme mergeFlutterTheme(BuildContext context) {
     final theme = Theme.of(context);
-    var boxDecoration = decoration ?? BoxDecoration(color: theme.cardColor);
+    final boxDecoration = decoration ?? BoxDecoration(color: theme.cardColor);
     final defaultToggleButtonDecoration = boxDecoration.copyWith(
       borderRadius: ((boxDecoration)
           .borderRadius
@@ -174,7 +174,8 @@ class SidebarXTheme {
       selectedItemTextPadding:
           selectedItemTextPadding ?? theme.selectedItemTextPadding,
       decoration: decoration ?? theme.decoration,
-      toggleButtonDecoration: toggleButtonDecoration ?? theme.toggleButtonDecoration,
+      toggleButtonDecoration:
+          toggleButtonDecoration ?? theme.toggleButtonDecoration,
       iconTheme: iconTheme ?? theme.iconTheme,
       selectedIconTheme: selectedIconTheme ?? theme.selectedIconTheme,
       textStyle: textStyle ?? theme.textStyle,
@@ -235,7 +236,8 @@ class SidebarXTheme {
       padding: padding ?? this.padding,
       margin: margin ?? this.margin,
       decoration: decoration ?? this.decoration,
-      toggleButtonDecoration: toggleButtonDecoration ?? this.toggleButtonDecoration,
+      toggleButtonDecoration:
+          toggleButtonDecoration ?? this.toggleButtonDecoration,
       iconTheme: iconTheme ?? this.iconTheme,
       selectedIconTheme: selectedIconTheme ?? this.selectedIconTheme,
       textStyle: textStyle ?? this.textStyle,
