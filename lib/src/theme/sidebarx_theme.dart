@@ -7,6 +7,7 @@ class SidebarXTheme {
     this.padding = EdgeInsets.zero,
     this.margin = EdgeInsets.zero,
     this.decoration,
+    this.toggleButtonDecoration,
     this.iconTheme,
     this.selectedIconTheme,
     this.textStyle,
@@ -21,6 +22,13 @@ class SidebarXTheme {
     this.selectedItemTextPadding,
     this.hoverColor,
     this.hoverTextStyle,
+    this.selectedHoverColor,
+    this.splashColor,
+    this.selectedSplashColor,
+    this.highlightColor,
+    this.selectedHighlightColor,
+    this.focusColor,
+    this.selectedFocusColor,
   });
 
   /// [SidebarX] width
@@ -30,13 +38,16 @@ class SidebarXTheme {
   final double height;
 
   /// [SidebarX] padding
-  final EdgeInsets padding;
+  final EdgeInsetsGeometry padding;
 
   /// [SidebarX] margin
-  final EdgeInsets margin;
+  final EdgeInsetsGeometry margin;
 
   /// [SidebarX] decoration
   final BoxDecoration? decoration;
+
+  /// [SidebarX] decoration
+  final BoxDecoration? toggleButtonDecoration;
 
   /// Unselected [SidebarXItem] icons theme
   final IconThemeData? iconTheme;
@@ -57,40 +68,71 @@ class SidebarXTheme {
   final BoxDecoration? selectedItemDecoration;
 
   /// Unselected item [SidebarXItem] marging
-  final EdgeInsets? itemMargin;
+  final EdgeInsetsGeometry? itemMargin;
 
   /// Selected item [SidebarXItem] marging
-  final EdgeInsets? selectedItemMargin;
+  final EdgeInsetsGeometry? selectedItemMargin;
 
   /// Unselected item [SidebarXItem] padding
-  final EdgeInsets? itemPadding;
+  final EdgeInsetsGeometry? itemPadding;
 
   /// Selected item [SidebarXItem] padding
-  final EdgeInsets? selectedItemPadding;
+  final EdgeInsetsGeometry? selectedItemPadding;
 
   /// Unselected item [SidebarXItem] text padding
-  final EdgeInsets? itemTextPadding;
+  final EdgeInsetsGeometry? itemTextPadding;
 
   /// Selected item [SidebarXItem] text padding
-  final EdgeInsets? selectedItemTextPadding;
+  final EdgeInsetsGeometry? selectedItemTextPadding;
 
   /// Background color of [SidebarXItem] when the mouse
   /// cursor hover over an item
   final Color? hoverColor;
 
+  /// Background color of [SidebarXItem] when the mouse
+  /// cursor hover over a selected item
+  final Color? selectedHoverColor;
+
+  /// Unselected item splash color of [SidebarXItem]
+  final Color? splashColor;
+
+  /// Selected item splash color of [SidebarXItem]
+  final Color? selectedSplashColor;
+
   /// [SidebarXItem] text  style  when the mouse
   /// cursor hover over an item
   final TextStyle? hoverTextStyle;
 
+  /// Unselected item highlight color of [SidebarXItem]'s InkWell
+  final Color? highlightColor;
+
+  /// Selected item highlight color of [SidebarXItem]'s InkWell
+  final Color? selectedHighlightColor;
+
+  /// Unselected item focus color of [SidebarXItem]
+  final Color? focusColor;
+
+  /// Selected item focus color of [SidebarXItem]
+  final Color? selectedFocusColor;
+
   /// Method to get default flutter theme settings
   SidebarXTheme mergeFlutterTheme(BuildContext context) {
     final theme = Theme.of(context);
+    final boxDecoration = decoration ?? BoxDecoration(color: theme.cardColor);
+    final defaultToggleButtonDecoration = boxDecoration.copyWith(
+      borderRadius: ((boxDecoration)
+          .borderRadius
+          ?.resolve(Directionality.of(context))
+          .copyWith(topLeft: Radius.zero, topRight: Radius.zero)),
+    );
     final mergedTheme = SidebarXTheme(
       width: width,
       height: height,
       padding: padding,
       margin: margin,
-      decoration: decoration ?? BoxDecoration(color: theme.cardColor),
+      decoration: boxDecoration,
+      toggleButtonDecoration:
+          toggleButtonDecoration ?? defaultToggleButtonDecoration,
       iconTheme: iconTheme ?? theme.iconTheme,
       selectedIconTheme: selectedIconTheme ??
           theme.iconTheme.copyWith(color: theme.primaryColor),
@@ -106,8 +148,15 @@ class SidebarXTheme {
       itemTextPadding: itemTextPadding,
       selectedItemTextPadding: selectedItemTextPadding,
       hoverColor: hoverColor ?? theme.hoverColor,
+      selectedHoverColor: selectedHoverColor ?? theme.hoverColor,
       hoverTextStyle: hoverTextStyle ??
           theme.textTheme.bodyMedium?.copyWith(color: theme.primaryColor),
+      splashColor: splashColor ?? theme.splashColor,
+      selectedSplashColor: selectedSplashColor ?? theme.splashColor,
+      highlightColor: highlightColor ?? theme.highlightColor,
+      selectedHighlightColor: selectedHighlightColor ?? theme.highlightColor,
+      focusColor: focusColor ?? theme.focusColor,
+      selectedFocusColor: selectedFocusColor ?? theme.focusColor,
     );
     return mergedTheme;
   }
@@ -125,6 +174,8 @@ class SidebarXTheme {
       selectedItemTextPadding:
           selectedItemTextPadding ?? theme.selectedItemTextPadding,
       decoration: decoration ?? theme.decoration,
+      toggleButtonDecoration:
+          toggleButtonDecoration ?? theme.toggleButtonDecoration,
       iconTheme: iconTheme ?? theme.iconTheme,
       selectedIconTheme: selectedIconTheme ?? theme.selectedIconTheme,
       textStyle: textStyle ?? theme.textStyle,
@@ -137,7 +188,15 @@ class SidebarXTheme {
       selectedItemDecoration:
           selectedItemDecoration ?? theme.selectedItemDecoration,
       hoverColor: hoverColor ?? theme.hoverColor,
+      selectedHoverColor: selectedHoverColor ?? theme.selectedHoverColor,
+      splashColor: splashColor ?? theme.splashColor,
+      selectedSplashColor: selectedSplashColor ?? theme.selectedSplashColor,
       hoverTextStyle: hoverTextStyle ?? theme.hoverTextStyle,
+      highlightColor: highlightColor ?? theme.highlightColor,
+      selectedHighlightColor:
+          selectedHighlightColor ?? theme.selectedHighlightColor,
+      focusColor: focusColor ?? theme.focusColor,
+      selectedFocusColor: selectedFocusColor ?? theme.selectedFocusColor,
     );
   }
 
@@ -148,6 +207,7 @@ class SidebarXTheme {
     EdgeInsets? padding,
     EdgeInsets? margin,
     BoxDecoration? decoration,
+    BoxDecoration? toggleButtonDecoration,
     IconThemeData? iconTheme,
     IconThemeData? selectedIconTheme,
     TextStyle? textStyle,
@@ -161,7 +221,14 @@ class SidebarXTheme {
     EdgeInsets? itemTextPadding,
     EdgeInsets? selectedItemTextPadding,
     Color? hoverColor,
+    Color? selectedHoverColor,
+    Color? splashColor,
+    Color? selectedSplashColor,
     TextStyle? hoverTextStyle,
+    Color? highlightColor,
+    Color? selectedHighlightColor,
+    Color? focusColor,
+    Color? selectedFocusColor,
   }) {
     return SidebarXTheme(
       width: width ?? this.width,
@@ -169,6 +236,8 @@ class SidebarXTheme {
       padding: padding ?? this.padding,
       margin: margin ?? this.margin,
       decoration: decoration ?? this.decoration,
+      toggleButtonDecoration:
+          toggleButtonDecoration ?? this.toggleButtonDecoration,
       iconTheme: iconTheme ?? this.iconTheme,
       selectedIconTheme: selectedIconTheme ?? this.selectedIconTheme,
       textStyle: textStyle ?? this.textStyle,
@@ -184,7 +253,15 @@ class SidebarXTheme {
       selectedItemTextPadding:
           selectedItemTextPadding ?? this.selectedItemTextPadding,
       hoverColor: hoverColor ?? this.hoverColor,
+      selectedHoverColor: selectedHoverColor ?? this.selectedHoverColor,
+      splashColor: splashColor ?? this.splashColor,
+      selectedSplashColor: selectedSplashColor ?? this.selectedSplashColor,
       hoverTextStyle: hoverTextStyle ?? this.hoverTextStyle,
+      highlightColor: highlightColor ?? this.highlightColor,
+      selectedHighlightColor:
+          selectedHighlightColor ?? this.selectedHighlightColor,
+      focusColor: focusColor ?? this.focusColor,
+      selectedFocusColor: selectedFocusColor ?? this.selectedFocusColor,
     );
   }
 }

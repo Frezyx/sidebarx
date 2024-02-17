@@ -58,57 +58,75 @@ class _SidebarXCellState extends State<SidebarXCell> {
         (widget.selected ? theme.selectedItemPadding : theme.itemPadding);
     final textPadding =
         widget.selected ? theme.selectedItemTextPadding : theme.itemTextPadding;
+    final splashColor =
+        widget.selected ? theme.selectedSplashColor : theme.splashColor;
+    final highlightColor =
+        widget.selected ? theme.selectedHighlightColor : theme.highlightColor;
+    final focusColor =
+        widget.selected ? theme.selectedFocusColor : theme.focusColor;
 
-    return MouseRegion(
-      onEnter: (_) => _onEnteredCellZone(),
-      onExit: (_) => _onExitCellZone(),
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-        onTap: widget.onTap,
-        onLongPress: widget.onLongPress,
-        onSecondaryTap: widget.onSecondaryTap,
-        behavior: HitTestBehavior.opaque,
-        child: Container(
-          decoration: decoration?.copyWith(
-            color: _hovered && !widget.selected ? theme.hoverColor : null,
-          ),
-          padding: padding ?? const EdgeInsets.all(8),
-          margin: margin ?? const EdgeInsets.all(4),
-          child: Row(
-            mainAxisAlignment: widget.extended
-                ? MainAxisAlignment.start
-                : MainAxisAlignment.center,
-            children: [
-              AnimatedBuilder(
-                animation: _animation,
-                builder: (context, _) {
-                  final value = ((1 - _animation.value) * 6).toInt();
-                  if (value <= 0) {
-                    return const SizedBox();
-                  }
-                  return Spacer(flex: value);
-                },
-              ),
-              if (widget.item.icon != null)
-                _Icon(item: widget.item, iconTheme: iconTheme)
-              else if (widget.item.iconWidget != null)
-                widget.item.iconWidget!,
-              Flexible(
-                flex: 6,
-                child: FadeTransition(
-                  opacity: _animation,
-                  child: Padding(
-                    padding: textPadding ?? EdgeInsets.zero,
-                    child: Text(
-                      widget.item.label ?? '',
-                      style: textStyle,
-                      overflow: TextOverflow.fade,
-                      maxLines: 1,
+    return Container(
+      decoration: decoration,
+      margin: margin ?? const EdgeInsets.all(4),
+      child: Material(
+        type: MaterialType.transparency,
+        borderRadius: decoration?.borderRadius,
+        child: InkWell(
+          focusColor: focusColor,
+          highlightColor: highlightColor,
+          splashColor: splashColor,
+          borderRadius:
+              decoration?.borderRadius?.resolve(Directionality.of(context)),
+          hoverColor:
+              widget.selected ? theme.selectedHoverColor : theme.hoverColor,
+          onHover: (value) {
+            if (value) {
+              _onEnteredCellZone();
+            } else {
+              _onExitCellZone();
+            }
+          },
+          onTap: widget.onTap,
+          onLongPress: widget.onLongPress,
+          onSecondaryTap: widget.onSecondaryTap,
+          child: Container(
+            padding: padding ?? const EdgeInsets.all(8),
+            child: Row(
+              mainAxisAlignment: widget.extended
+                  ? MainAxisAlignment.start
+                  : MainAxisAlignment.center,
+              children: [
+                AnimatedBuilder(
+                  animation: _animation,
+                  builder: (context, _) {
+                    final value = ((1 - _animation.value) * 6).toInt();
+                    if (value <= 0) {
+                      return const SizedBox();
+                    }
+                    return Spacer(flex: value);
+                  },
+                ),
+                if (widget.item.icon != null)
+                  _Icon(item: widget.item, iconTheme: iconTheme)
+                else if (widget.item.iconWidget != null)
+                  widget.item.iconWidget!,
+                Flexible(
+                  flex: 6,
+                  child: FadeTransition(
+                    opacity: _animation,
+                    child: Padding(
+                      padding: textPadding ?? EdgeInsets.zero,
+                      child: Text(
+                        widget.item.label ?? '',
+                        style: textStyle,
+                        overflow: TextOverflow.fade,
+                        maxLines: 1,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

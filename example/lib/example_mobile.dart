@@ -43,6 +43,7 @@ class SidebarXExampleApp extends StatelessWidget {
             itemTextPadding: const EdgeInsets.only(left: 30),
             selectedItemTextPadding: const EdgeInsets.only(left: 30),
             itemDecoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
               border: Border.all(color: canvasColor),
             ),
             selectedItemDecoration: BoxDecoration(
