@@ -185,8 +185,10 @@ class _SidebarXState extends State<SidebarX>
 
   void _onFooterItemSelected(SidebarXItem item, int index) {
     item.onTap?.call();
-    widget.controller.selectIndex(
-        widget.items.length + widget.footerItems.length - index - 1);
+    if (item.selectable) {
+      widget.controller.selectIndex(
+          widget.items.length + widget.footerItems.length - index - 1);
+    }
   }
 
   void _onFooterItemLongPressSelected(SidebarXItem item, int index) {
@@ -199,7 +201,9 @@ class _SidebarXState extends State<SidebarX>
 
   void _onItemSelected(SidebarXItem item, int index) {
     item.onTap?.call();
-    widget.controller.selectIndex(index);
+    if (item.selectable) {
+      widget.controller.selectIndex(index);
+    }
   }
 
   void _onItemLongPressSelected(SidebarXItem item, int index) {

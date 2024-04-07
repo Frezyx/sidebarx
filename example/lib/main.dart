@@ -156,15 +156,29 @@ class ExampleSidebarX extends StatelessWidget {
           icon: Icons.people,
           label: 'People',
         ),
-        const SidebarXItem(
+        SidebarXItem(
           icon: Icons.favorite,
           label: 'Favorites',
+          selectable: false,
+          onTap: () => _showDisabledAlert(context),
         ),
         const SidebarXItem(
           iconWidget: FlutterLogo(size: 20),
           label: 'Flutter',
         ),
       ],
+    );
+  }
+
+  void _showDisabledAlert(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          'Item disabled for selecting',
+          style: TextStyle(color: Colors.black),
+        ),
+        backgroundColor: Colors.white,
+      ),
     );
   }
 }
