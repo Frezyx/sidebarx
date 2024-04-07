@@ -43,11 +43,14 @@ class _SidebarXCellState extends State<SidebarXCell> {
   @override
   Widget build(BuildContext context) {
     final theme = widget.theme;
-    final iconTheme =
-        widget.selected ? theme.selectedIconTheme : theme.iconTheme;
+    final iconTheme = widget.selected
+        ? theme.selectedIconTheme
+        : _hovered
+            ? theme.hoverIconTheme ?? theme.selectedIconTheme
+            : theme.iconTheme;
     final textStyle = widget.selected
         ? theme.selectedTextStyle
-        : (_hovered)
+        : _hovered
             ? theme.hoverTextStyle
             : theme.textStyle;
     final decoration =

@@ -21,6 +21,7 @@ class SidebarXTheme {
     this.selectedItemTextPadding,
     this.hoverColor,
     this.hoverTextStyle,
+    this.hoverIconTheme,
   });
 
   /// [SidebarX] width
@@ -43,6 +44,9 @@ class SidebarXTheme {
 
   /// Selected [SidebarXItem] icon theme
   final IconThemeData? selectedIconTheme;
+
+  /// Hovered [SidebarXItem] icon theme
+  final IconThemeData? hoverIconTheme;
 
   /// Unselected [SidebarXItem] text style
   final TextStyle? textStyle;
@@ -94,6 +98,8 @@ class SidebarXTheme {
       iconTheme: iconTheme ?? theme.iconTheme,
       selectedIconTheme: selectedIconTheme ??
           theme.iconTheme.copyWith(color: theme.primaryColor),
+      hoverIconTheme: selectedIconTheme ??
+          theme.iconTheme.copyWith(color: theme.primaryColor),
       textStyle: textStyle ?? theme.textTheme.bodyMedium,
       selectedTextStyle: selectedTextStyle ??
           theme.textTheme.bodyMedium?.copyWith(color: theme.primaryColor),
@@ -138,6 +144,7 @@ class SidebarXTheme {
           selectedItemDecoration ?? theme.selectedItemDecoration,
       hoverColor: hoverColor ?? theme.hoverColor,
       hoverTextStyle: hoverTextStyle ?? theme.hoverTextStyle,
+      hoverIconTheme: hoverIconTheme ?? theme.hoverIconTheme,
     );
   }
 
@@ -162,6 +169,7 @@ class SidebarXTheme {
     EdgeInsets? selectedItemTextPadding,
     Color? hoverColor,
     TextStyle? hoverTextStyle,
+    IconThemeData? hoverIconTheme,
   }) {
     return SidebarXTheme(
       width: width ?? this.width,
@@ -185,6 +193,7 @@ class SidebarXTheme {
           selectedItemTextPadding ?? this.selectedItemTextPadding,
       hoverColor: hoverColor ?? this.hoverColor,
       hoverTextStyle: hoverTextStyle ?? this.hoverTextStyle,
+      hoverIconTheme: hoverIconTheme ?? this.hoverIconTheme,
     );
   }
 }
