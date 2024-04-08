@@ -92,9 +92,13 @@ class _SidebarXCellState extends State<SidebarXCell> {
                   return Spacer(flex: value);
                 },
               ),
-              if (widget.item.icon != null)
+              if (widget.item.iconBuilder != null)
+                widget.item.iconBuilder!.call(widget.selected, _hovered)
+              else if (widget.item.icon != null)
                 _Icon(item: widget.item, iconTheme: iconTheme)
+              // ignore: deprecated_member_use_from_same_package
               else if (widget.item.iconWidget != null)
+                // ignore: deprecated_member_use_from_same_package
                 widget.item.iconWidget!,
               Flexible(
                 flex: 6,

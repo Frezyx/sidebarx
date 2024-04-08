@@ -1,5 +1,10 @@
 import 'package:flutter/cupertino.dart';
 
+typedef SidebarXItemBuilder = Widget Function(
+  bool selected,
+  bool hidden,
+);
+
 class SidebarXItem {
   const SidebarXItem({
     this.label,
@@ -9,6 +14,7 @@ class SidebarXItem {
     this.onLongPress,
     this.onSecondaryTap,
     this.selectable = true,
+    this.iconBuilder,
   }) : assert(
           (icon != null || iconWidget != null) &&
               (icon == null || iconWidget == null),
@@ -17,9 +23,13 @@ class SidebarXItem {
 
   final String? label;
   final IconData? icon;
+  @Deprecated('Use iconBuilder instead')
   final Widget? iconWidget;
   final bool selectable;
   final Function()? onTap;
   final Function()? onLongPress;
   final Function()? onSecondaryTap;
+
+  /// The `itemBuilder` callback used for setup custom icon for [SidebarXItem]
+  final SidebarXItemBuilder? iconBuilder;
 }

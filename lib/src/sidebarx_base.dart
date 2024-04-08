@@ -60,10 +60,10 @@ class SidebarX extends StatefulWidget {
   /// Togglin animation duration
   final Duration animationDuration;
 
-  ///Collapse Icon
+  /// Collapse Icon
   final IconData collapseIcon;
 
-  ///Extend Icon
+  /// Extend Icon
   final IconData extendIcon;
 
   @override
