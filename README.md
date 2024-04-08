@@ -29,7 +29,7 @@ Follow these steps to use this package
 
 ```yaml
 dependencies:
-  sidebarx: ^0.17.0
+  sidebarx: ^0.17.1
 ```
 
 ### Add import package

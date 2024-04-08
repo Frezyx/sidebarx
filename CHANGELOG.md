@@ -1,3 +1,7 @@
+## 0.17.1
+* Add deprecated annotation for **iconWidget** field 
+* Fix **SidebarXItem** assert rules
+
 ## 0.17.0
 * Add **selectable** field for **SidebarXItem**
 * Add **hoverIconTheme** field for **SidebarXTheme**

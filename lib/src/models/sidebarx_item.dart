@@ -2,22 +2,21 @@ import 'package:flutter/cupertino.dart';
 
 typedef SidebarXItemBuilder = Widget Function(
   bool selected,
-  bool hidden,
+  bool hovered,
 );
 
 class SidebarXItem {
   const SidebarXItem({
     this.label,
     this.icon,
-    this.iconWidget,
+    @Deprecated('Use iconBuilder instead') this.iconWidget,
+    this.iconBuilder,
     this.onTap,
     this.onLongPress,
     this.onSecondaryTap,
     this.selectable = true,
-    this.iconBuilder,
   }) : assert(
-          (icon != null || iconWidget != null) &&
-              (icon == null || iconWidget == null),
+          (icon != null || iconBuilder != null || iconWidget != null),
           'You can create SidebarXItem with IconData? icon or with Widget? iconWidget',
         );
 
