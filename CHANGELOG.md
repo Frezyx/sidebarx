@@ -1,6 +1,7 @@
 ## 0.17.0
 * Add **selectable** field for **SidebarXItem**
 * Add **hoverIconTheme** field for **SidebarXTheme**
+* Add **iconBuilder** field for **SidebarXItem**
 
 ## 0.16.3
 * Add onLongPress, onSecondaryTap for SidebarXCell (SidebarX item)
