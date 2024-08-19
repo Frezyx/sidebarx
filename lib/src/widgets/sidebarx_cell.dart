@@ -102,9 +102,7 @@ class _SidebarXCellState extends State<SidebarXCell> {
                 widget.item.iconWidget!,
               Flexible(
                 flex: 6,
-                child: FadeTransition(
-                  opacity: _animation,
-                  child: Padding(
+                child: Padding(
                     padding: textPadding ?? EdgeInsets.zero,
                     child: Text(
                       widget.item.label ?? '',
@@ -112,7 +110,6 @@ class _SidebarXCellState extends State<SidebarXCell> {
                       overflow: TextOverflow.fade,
                       maxLines: 1,
                     ),
-                  ),
                 ),
               ),
             ],
