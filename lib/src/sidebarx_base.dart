@@ -20,6 +20,7 @@ class SidebarX extends StatefulWidget {
     this.animationDuration = const Duration(milliseconds: 300),
     this.collapseIcon = Icons.arrow_back_ios_new,
     this.extendIcon = Icons.arrow_forward_ios,
+    this.reverseFooter = true,
   }) : super(key: key);
 
   /// Default theme of Sidebar
@@ -50,6 +51,9 @@ class SidebarX extends StatefulWidget {
   /// Sidebar showing toggle button if value [true]
   /// not showing if value [false]
   final bool showToggleButton;
+
+  /// Enable footer at the bottom if value [true]
+  final bool reverseFooter;
 
   /// Divider between header and [items]
   final Widget? headerDivider;
@@ -149,7 +153,7 @@ class _SidebarXState extends State<SidebarX>
               if (widget.footerItems.isNotEmpty)
                 Expanded(
                   child: ListView.separated(
-                    reverse: true,
+                    reverse: widget.reverseFooter,
                     itemCount: widget.footerItems.length,
                     separatorBuilder: widget.separatorBuilder ??
                         (_, __) => const SizedBox(height: 8),

@@ -1,8 +1,8 @@
 name: sidebarx
 description: flutter multiplatform navigation sidebar / side navigationbar / drawer widget
-version: 0.17.1
-homepage: https://github.com/Frezyx/sidebarx
-repository: https://github.com/Frezyx/sidebarx
+version: 0.17.2
+homepage: https://github.com/chordflower/sidebarx
+repository: https://github.com/chordflower/sidebarx
 
 topics:
   - widget
