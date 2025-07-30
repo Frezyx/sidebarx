@@ -60,10 +60,10 @@ class SidebarXTheme {
   /// Selected item [SidebarXItem] decoration
   final BoxDecoration? selectedItemDecoration;
 
-  /// Unselected item [SidebarXItem] marging
+  /// Unselected item [SidebarXItem] margin
   final EdgeInsets? itemMargin;
 
-  /// Selected item [SidebarXItem] marging
+  /// Selected item [SidebarXItem] margin
   final EdgeInsets? selectedItemMargin;
 
   /// Unselected item [SidebarXItem] padding
@@ -98,7 +98,7 @@ class SidebarXTheme {
       iconTheme: iconTheme ?? theme.iconTheme,
       selectedIconTheme: selectedIconTheme ??
           theme.iconTheme.copyWith(color: theme.primaryColor),
-      hoverIconTheme: selectedIconTheme ??
+      hoverIconTheme: hoverIconTheme ??
           theme.iconTheme.copyWith(color: theme.primaryColor),
       textStyle: textStyle ?? theme.textTheme.bodyMedium,
       selectedTextStyle: selectedTextStyle ??
@@ -148,7 +148,7 @@ class SidebarXTheme {
     );
   }
 
-  /// Defautl copyWith method
+  /// Default copyWith method
   SidebarXTheme copyWith({
     double? width,
     double? height,
