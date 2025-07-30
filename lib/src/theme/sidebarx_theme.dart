@@ -98,8 +98,6 @@ class SidebarXTheme {
       iconTheme: iconTheme ?? theme.iconTheme,
       selectedIconTheme: selectedIconTheme ??
           theme.iconTheme.copyWith(color: theme.primaryColor),
-      hoverIconTheme: hoverIconTheme ??
-          theme.iconTheme.copyWith(color: theme.primaryColor),
       textStyle: textStyle ?? theme.textTheme.bodyMedium,
       selectedTextStyle: selectedTextStyle ??
           theme.textTheme.bodyMedium?.copyWith(color: theme.primaryColor),
@@ -114,6 +112,8 @@ class SidebarXTheme {
       hoverColor: hoverColor ?? theme.hoverColor,
       hoverTextStyle: hoverTextStyle ??
           theme.textTheme.bodyMedium?.copyWith(color: theme.primaryColor),
+      hoverIconTheme: hoverIconTheme ??
+          theme.iconTheme.copyWith(color: theme.primaryColor),
     );
     return mergedTheme;
   }
