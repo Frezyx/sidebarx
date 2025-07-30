@@ -1,3 +1,6 @@
+## 0.17.2
+* Fix **SidebarXTheme** hoverIconTheme field merging in **mergeFlutterTheme** method
+
 ## 0.17.1
 * Add deprecated annotation for **iconWidget** field 
 * Fix **SidebarXItem** assert rules
