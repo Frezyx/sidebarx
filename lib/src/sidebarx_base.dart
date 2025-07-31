@@ -2,6 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 import 'package:sidebarx/src/widgets/widgets.dart';
 
+/// Enum representing the fit type for the footer in a ListView.
+///
+/// Use [FooterFitType.fit] when you want the footer to fit its content size,
+/// and [FooterFitType.expand] when you want the footer to expand to occupy available space.
+enum FooterFitType {
+  /// The footer will fit its content size.
+  fit,
+
+  /// The footer will expand to occupy available space.
+  expand,
+}
+
 class SidebarX extends StatefulWidget {
   const SidebarX({
     Key? key,
@@ -20,6 +32,7 @@ class SidebarX extends StatefulWidget {
     this.animationDuration = const Duration(milliseconds: 300),
     this.collapseIcon = Icons.arrow_back_ios_new,
     this.extendIcon = Icons.arrow_forward_ios,
+    this.footerFitType = FooterFitType.expand,
   }) : super(key: key);
 
   /// Default theme of Sidebar
@@ -65,6 +78,9 @@ class SidebarX extends StatefulWidget {
 
   /// Extend Icon
   final IconData extendIcon;
+
+  /// Flag that indicates if the footer items should fit or not
+  final FooterFitType footerFitType;
 
   @override
   State<SidebarX> createState() => _SidebarXState();
@@ -148,7 +164,9 @@ class _SidebarXState extends State<SidebarX>
                   const SizedBox(),
               if (widget.footerItems.isNotEmpty)
                 Expanded(
+                  flex: widget.footerFitType == FooterFitType.expand ? 1 : 0,
                   child: ListView.separated(
+                    shrinkWrap: widget.footerFitType == FooterFitType.fit,
                     reverse: true,
                     itemCount: widget.footerItems.length,
                     separatorBuilder: widget.separatorBuilder ??
